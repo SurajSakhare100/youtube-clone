@@ -8,14 +8,9 @@ function Navbar() {
         <div className='w-full h-[60px] shadow-xl'>
             <nav className="w-full h-full py-2 bg-black text-white p-4">
                 <ul className='w-full h-full flex flex-row items-center justify-between'>
-                    {/* <li className='md:hidden '>
-                        <NavLink to='/s'>
-                        <button className='w-full h-ful text-sm font-bold rounded-sm py-1 px-2 shadow-md'>S</button>
-                        </NavLink>
-                    </li> */}
                     <i className="bi bi-bank w-[10px] text-white h-[10px]" ></i>
-                    <li><NavLink to="/">Udemy</NavLink></li>
-                    <li><NavLink to="/categories">Categories</NavLink></li>
+                    <li><NavLink to="/">You Tube</NavLink></li>
+                    <li><NavLink to="/categories">Home</NavLink></li>
                     <li className='lg:w-1/2 lg:h-3/4 relative '>
                         <input
                             className='w-full h-full rounded-2xl outline-none text-black px-3 text-sm shadow-lg  bg-white '
@@ -44,10 +39,6 @@ function Navbar() {
                     </li>
 
                 </ul>
-                {/* <NavLink to='/'>home</NavLink>
-                <NavLink to='/categories'>Categories</NavLink>
-                <NavLink to='/about'>about</NavLink>
-                <NavLink to='/contact'>Contact</NavLink> */}
             </nav>
         </div>
     )
