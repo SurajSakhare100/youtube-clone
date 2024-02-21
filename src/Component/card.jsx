@@ -15,7 +15,6 @@ function card() {
       UI/UX Review Check
     </h5>
     <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-      The place is close to Barceloneta Beach and bus stop just 2 min by walk
       
     </p>
   </div>
