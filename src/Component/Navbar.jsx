@@ -1,25 +1,24 @@
-import { faBars, faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons'
 import youtube from '../assets/youtube.png'
-import { faSpeakap, faSpeakerDeck } from '@fortawesome/free-brands-svg-icons'
 
 function Navbar() {
     return (
         <>
-            <div className='flex flex-row items-center justify-between bg-black py-2 px-4'>
+            <div className='flex flex-row items-center justify-between bg-black py-2 px-6 fixed w-full'>
                 <div className='flex flex-row gap-2 items-center'>
-                    <FontAwesomeIcon icon={faBars} className='hover:rounded-full hover:bg-slate-900 text-md p-3 text-white' />
-                    <img src={youtube} width={30} height={20} />
-                    <p className='text-xl font-bold font-sans text-white'>YOUTUBE <sup className='text-sm font-normal'>IN</sup></p>
+                    <FontAwesomeIcon icon={faBars} className='hover:rounded-full hover:bg-slate-900 text-xl p-3 text-white' />
+                    <img src={youtube} width={25} height={20} />
+                    <p className='text-xl font-bold font-sans text-white hidden sm:block'>YOUTUBE <sup className='text-sm font-normal'>IN</sup></p>
                 </div>
                 <div className='md:flex md:gap-4 md:items-center hidden'>
                     <div className='h-full flex items-center justify-center relative '>
                         <input
                             type="text"
                             placeholder='Search'
-                            className='md:w-[350px] lg:w-[500px] xl:w-[700px] md:h-full bg-black rounded-3xl border border-slate-100 py-2 px-2 outline-none' />
-                        <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl border border-slate-100 px-6 flex items-center justify-center rounded-l-none '>
+                            className='md:w-[350px] lg:w-[500px] xl:w-[700px] md:h-full bg-black rounded-3xl outline-1 outline-slate-100 py-2 px-2 outline-none text-white ' />
+                        <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl shadow px-6 flex items-center justify-center rounded-l-none '>
                             <FontAwesomeIcon icon={faSearch} className='text-white md:w-[20px] md:h-[20px]' />
                         </div>
                     </div>
