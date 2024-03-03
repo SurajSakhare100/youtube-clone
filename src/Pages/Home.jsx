@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className='flex w-full h-fit bg-black'>
+      <div className='flex w-full h-[fit] bg-black'>
       <SideNav/>
       <Maincontainer />
       </div>

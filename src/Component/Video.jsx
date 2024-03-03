@@ -1,8 +1,9 @@
 import React from 'react'
 
-function Video({imgLink}) {
+function Video({imgLink,children}) {
     return (
         <div className='w-full px-4'>
+            {children}
             <img src={imgLink} className='w-full rounded-lg'/>
             <div className='flex flex-row gap-4 pt-2 px-1'>
                 <div className='w-fit'>
