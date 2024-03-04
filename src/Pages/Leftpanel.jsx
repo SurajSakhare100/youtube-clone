@@ -18,7 +18,7 @@ function Leftpanel({videoid}) {
                             <img src="src/assets/megan.png" width={30} height={30} className='rounded-full' />
                             <div className='flex flex-col'>
                                 <h5>
-                                    Sheryians Coding School
+                                    Sheryians Coding 
                                 </h5>
                                 <p>288K subscribers</p>
                             </div>
