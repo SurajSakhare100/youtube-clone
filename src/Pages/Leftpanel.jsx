@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import Comment from '../Component/Comment'
 
-function Leftpanel() {
+function Leftpanel({videoid}) {
     return (
         <>
             <div className='w-full md:w-3/4 pt-2'>
                 <div className='w-full'>
-                    <video src="src/assets/video.mp4" controls muted  className=' rounded-lg '></video>
+                    <iframe src={`https://youtube.com/embed/${videoid}`} frameborder="0"></iframe>
+                    {/* <video src="src/assets/video.mp4" controls muted  className=' rounded-lg '></video> */}
                     <div className='mt-2'>
                         <h2 className='text-xl'>5 Real-Life JavaScript Effects and Features That Reign Supreme! 👑🌐</h2>
                     </div>

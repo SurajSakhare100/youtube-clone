@@ -1,19 +1,15 @@
-import React from 'react'
+import { useParams } from 'react-router-dom'
 import Home from './Pages/Home.jsx'
 import SideNav from './Pages/SideNav.jsx'
 import VideoPage from './Pages/VideoPage.jsx'
 
 function App() {
-  async function logMovies() {
-    const response = await fetch('https://www.googleapis.com/youtube/v3/videoCategories');
-    const movies = await response.json();
-    console.log(movies);
-  }
-  logMovies()
+  const {videoid}= useParams();
+  
   return (
     <>
-      <Home/>
-      {/* <VideoPage/> */}
+      {/* <Home/> */}
+      <VideoPage videoid={videoid}/>
     </>
   )
 }
