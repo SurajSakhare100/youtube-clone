@@ -10,7 +10,6 @@ function Maincontainer({ category }) {
     const video_url =
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=200&regionCode=IN&videoCategoryId=${category}&key=${API}`
     await fetch(video_url).then(response => response.json()).then(data => setdata(data.items));
-    console.log(data)
   }
   useEffect(() => {
     fetchdata()
