@@ -14,7 +14,7 @@ function SideNav() {
                         <ul className='w-full px-2 pb-2 border-b'>
                             <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
                                 <FontAwesomeIcon icon={faHome} />
-                                <p>Home</p>
+                               
                             </li>
                             <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
                                 <FontAwesomeIcon icon={faViacoin} />
