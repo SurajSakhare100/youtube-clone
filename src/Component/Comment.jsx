@@ -22,7 +22,7 @@ function Comment() {
                             <FontAwesomeIcon icon={faHeart} className='w-[20px] px-6  text-sm h-[30px] rounded-2xl' />
                         </div>
                         < div className='flex items-center'>
-                            <p>200</p>
+                            
                             <FontAwesomeIcon icon={faHeart} className='w-[20px] px-6  text-sm h-[30px]' />
                         </div>
                     </div>
