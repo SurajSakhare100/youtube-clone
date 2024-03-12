@@ -18,11 +18,11 @@ function Comment() {
                     </h4>
                     <div className='flex gap-2 text-[12px]'>
                         <div className='flex items-center'>
-                            <p>100</p>
+                            
                             <FontAwesomeIcon icon={faHeart} className='w-[20px] px-6  text-sm h-[30px] rounded-2xl' />
                         </div>
                         < div className='flex items-center'>
-                            <p>200</p>
+                            
                             <FontAwesomeIcon icon={faHeart} className='w-[20px] px-6  text-sm h-[30px]' />
                         </div>
                     </div>

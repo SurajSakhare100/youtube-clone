@@ -12,7 +12,6 @@ function Videosm({imgLinks}) {
                     Sheryians Coding School
                 </h4>
                 <div className='flex gap-2 text-[12px]'>
-                    <p>610K views</p>
                     <p> 8 months ago</p>
                 </div>
             </div>
