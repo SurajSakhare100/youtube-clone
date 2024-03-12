@@ -1,17 +1,22 @@
 import { faDownload, faHeart, faHeartBroken, faLink, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useState,useContext } from 'react'
 import Comment from '../Component/Comment'
-
-function Leftpanel({videoid}) {
+import videoApi from '../Api/VideoCategory'
+function Leftpanel({videoid,videoNum}) {
+    // const datas=videoApi(videoid)
+    // console.log(datas)
+    const data=useContext(Category);
     return (
         <>
-            <div className='w-full md:w-3/4 pt-2'>
+            <div className='w-full md:w-2/3 pt-4 px-10'>
                 <div className='w-full'>
-                    <iframe src={`https://youtube.com/embed/${videoid}`} frameborder="0"></iframe>
-                    {/* <video src="src/assets/video.mp4" controls muted  className=' rounded-lg '></video> */}
+                    <iframe src={`https://youtube.com/embed/${videoNum}`}  className='w-full h-[550px]'></iframe>
+                    {/* <video src="src/assets/video.mp4" controls muted  className='' rounded-lg '></video> */}
                     <div className='mt-2'>
-                        <h2 className='text-xl'>5 Real-Life JavaScript Effects and Features That Reign Supreme! 👑🌐</h2>
+                        <h2 className='text-xl'>
+                            {datas.items.snippet.title}
+                        </h2>
                     </div>
                     <div className='flex items-center justify-between my-2'>
                         <div className='flex gap-4 items-center'>

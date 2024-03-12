@@ -4,8 +4,7 @@ import { faHome, faVault, faVial } from '@fortawesome/free-solid-svg-icons'
 import { faViacoin, faViadeo } from '@fortawesome/free-brands-svg-icons'
 import Maincontainer from './Maincontainer'
 function SideNav() {
-    const [category, setCategory] = useState(0);
-    console.log(category)
+     const [category, setCategory] = useState(0);
     return (
         <>
             <div className='flex w-full h-screen bg-black'>
@@ -108,5 +107,4 @@ function SideNav() {
         </>
     )
 }
-
 export default SideNav

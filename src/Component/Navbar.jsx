@@ -6,7 +6,6 @@ import youtube from '../assets/youtube.png'
 function Navbar() {
     return (
         <>
-<p>Navbar</p>
             <div className='flex flex-row items-center justify-between bg-black py-2 px-6 fixed w-full h-[8vh]'>
                 <div className='flex flex-row gap-2 items-center'>
                     <FontAwesomeIcon icon={faBars} className='hover:rounded-full hover:bg-slate-900 text-xl p-3 text-white' />
