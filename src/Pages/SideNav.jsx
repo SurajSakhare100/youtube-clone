@@ -37,7 +37,7 @@ function SideNav() {
                             </li>
                             <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
                                 <img src="src/assets/megan.png" width={30} height={30} className='rounded-full' />
-                                <p>Megan Niyan</p>
+                                <p>Megan Niya</p>
                             </li>
                             <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
                                 <img src="src/assets/gerard.png" width={30} height={30} className='rounded-full' />
