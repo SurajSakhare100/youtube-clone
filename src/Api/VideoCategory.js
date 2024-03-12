@@ -11,7 +11,6 @@ function videoApi(category) {
       .then((data) => setdata(data.items));
    
     }
-    console.log(data)
     useEffect(() => {
       fetchdata();
     }, [category]);

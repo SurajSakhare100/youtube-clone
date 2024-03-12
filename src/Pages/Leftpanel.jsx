@@ -4,9 +4,8 @@ import React, { useState,useContext } from 'react'
 import Comment from '../Component/Comment'
 import videoApi from '../Api/VideoCategory'
 function Leftpanel({videoid,videoNum}) {
-    // const datas=videoApi(videoid)
-    // console.log(datas)
-    const data=useContext(Category);
+    const datas=videoApi(videoid)
+    // const data=useContext(Category);
     return (
         <>
             <div className='w-full md:w-2/3 pt-4 px-10'>
@@ -14,9 +13,7 @@ function Leftpanel({videoid,videoNum}) {
                     <iframe src={`https://youtube.com/embed/${videoNum}`}  className='w-full h-[550px]'></iframe>
                     {/* <video src="src/assets/video.mp4" controls muted  className='' rounded-lg '></video> */}
                     <div className='mt-2'>
-                        <h2 className='text-xl'>
-                            {datas.items.snippet.title}
-                        </h2>
+                        <h2 className='text-xl'>  </h2>
                     </div>
                     <div className='flex items-center justify-between my-2'>
                         <div className='flex gap-4 items-center'>

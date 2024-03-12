@@ -6,11 +6,11 @@ import SideNav from './SideNav';
 import videoApi from '../Api/VideoCategory';
 import { Category } from '../context/Category';
 function Maincontainer({ category }) {
-// const data=videoApi(category)
-  const data=useContext(Category)
+const data=videoApi(category)
+  // const data=useContext(Category)
   return (
     <div className='w-full h-full overflow-scroll mt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
-      {/* {data.map((items, index) => {
+      {data.map((items, index) => {
         return (
           <div key={index}>
           <Link 
@@ -36,7 +36,7 @@ function Maincontainer({ category }) {
           </Link>
           </div>
         )
-      })} */}
+      })}
     </div>
   )
 }
