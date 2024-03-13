@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-export const Category=React.createContext(
+export default Category=React.createContext(
     {
         data:[]
     }
