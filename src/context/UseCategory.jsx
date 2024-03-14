@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import videoApi from '../Api/VideoCategory'
+import { CategoryProvider } from './Category';
 function CategoryProvider({children}) {
-   const data =videoApi(24)
+   const data =videoApi(24);
+   console.log(data)
+   const category='loop'
   return (
-    <Usercontext.Provider value={data}>
+    <CategoryProvider value={{data,category}}>
       {children}
-    </Usercontext.Provider>
+    </CategoryProvider>
   )
 }
 

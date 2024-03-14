@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 import valueConverter from '../Component/valueConverter';
 import SideNav from './SideNav';
 import videoApi from '../Api/VideoCategory';
-import { Category } from '../context/Category';
 function Maincontainer({ category }) {
 const data=videoApi(category)
   // const data=useContext(Category)

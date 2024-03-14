@@ -1,13 +1,14 @@
 import { faDownload, faHeart, faHeartBroken, faLink, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState,useContext } from 'react'
+import React, { useContext } from 'react'
 import Comment from '../Component/Comment'
 import videoApi from '../Api/VideoCategory'
-import Category from '../context/Category.js'
+import { useapi} from '../context/Category'
 function Leftpanel({videoid,videoNum}) {
     // const datas=videoApi(videoid)
-    const data=useContext(Category);
-    console.log(data)
+    // const data=useContext(Category);
+    const category=useapi()
+    console.log(category)
     return (
         <>
             <div className='w-full md:w-2/3 pt-4 px-10'>
