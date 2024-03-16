@@ -8,6 +8,7 @@ function Leftpanel({ videoid, videoNum }) {
 
     const [api, setapi] = useState(null);
     const [channeldata, setchanneldata] = useState(null);
+    const [commentdata, setcommentdata] = useState(null);
     const fetchapi = async () => {
         const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
         const video_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoNum}&maxResults=200&key=${API}`;
@@ -27,10 +28,26 @@ function Leftpanel({ videoid, videoNum }) {
     useEffect(() => {
         fetchapi();
     }, [videoid]);
+    const fetchcomment = async () => {
+        const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
+        const video_url =
+            `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoNum}&key=${API}`
+        await fetch(video_url)
+            .then((response) => response.json())
+            .then((data) => 
+            {setcommentdata(data.items)
+            console.log(data)}
+            );
+    }
+    useEffect(() => {
+        fetchapi();
+    }, [videoid]);
     useEffect(() => {
         fetchchannel();
     }, [api]);
-    console.log(channeldata, 300)
+    useEffect(() => {
+        fetchcomment();
+    }, [videoid]);
     return (
         <>
             <div className='w-full md:w-full pt-4 px-10'>
@@ -75,6 +92,7 @@ function Leftpanel({ videoid, videoNum }) {
                     <h2 className='text-xl font-bold'>Comment</h2>
                     <p>{valueConverter(api ? api.statistics.commentCount : '')}</p>
                 </div>
+                <p></p>
                 <Comment />
                 <Comment />
                 <Comment />

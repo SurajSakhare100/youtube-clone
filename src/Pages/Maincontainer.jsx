@@ -1,12 +1,10 @@
 import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import valueConverter from '../Component/valueConverter';
-import SideNav from './SideNav';
 import videoApi from '../Api/VideoCategory';
 function Maincontainer({ category }) {
 const data=videoApi(category)
-  // const data=useContext(Category)
   return (
     <div className='w-full h-full overflow-scroll mt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
       {data.map((items, index) => {
@@ -14,7 +12,6 @@ const data=videoApi(category)
           <div key={index}>
           <Link 
           to={`/video/${items.snippet.categoryId}/${items.id}`} 
-          // to={`video`} 
           >
             <img src={items.snippet.thumbnails.medium.url} alt="" className='w-full rounded-lg' />
             <div className='flex flex-row gap-4 pt-2 px-1'>
