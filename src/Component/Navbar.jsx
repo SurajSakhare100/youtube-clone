@@ -1,16 +1,17 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons'
 import youtube from '../assets/youtube.png'
 import { Link } from 'react-router-dom'
+import Searchapi from '../Api/SearchApi'
 
 function Navbar() {
-    const [search,setSearch]=useState(null)
-    const searchTitle=useRef()
+    const [search,setSearch]=useState('')
+    const searchInput=useRef()
     const handlesubmit=(value)=>{
         setSearch(value)
-        console.log(search)
     }
+    
     return (
         <>
             <div className='flex flex-row items-center justify-between bg-black py-2 px-6 fixed w-full h-[8vh]'>
@@ -25,11 +26,12 @@ function Navbar() {
                             type="text"
                             placeholder='Search'
                             className='md:w-[350px] texl-xl lg:w-[500px] xl:w-[700px] md:h-full bg-black rounded-3xl outline-1 outline-slate-100 py-2 px-2 outline-none text-white ' 
-                            ref={searchTitle}
+                            ref={searchInput}
+                            onChange={(e)=>{handlesubmit(e.target.value)}}
                             />
                         <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl shadow px-6 flex items-center justify-center rounded-l-none '>
                             <Link to={'search'}><FontAwesomeIcon icon={faSearch} className='text-white md:w-[20px] md:h-[20px]'
-                            onClick={()=>handlesubmit(searchTitle.current.value)} /></Link>
+                            onClick={()=>handlesubmit(searchInput.current.value)} /></Link>
                         </div>
                     </div>
                     <div className='ml-2'>
