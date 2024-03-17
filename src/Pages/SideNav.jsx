@@ -7,10 +7,9 @@ function SideNav() {
      const [category, setCategory] = useState(0);
     return (
         <>
-            <div className='flex w-full h-screen bg-black'>
                 <div className='md:w-[250px] bg-black mt-12'>
                     <div className='lg:w-full h-full hidden sm:hidden md:block overflow-y-auto'>
-                        <ul className='w-full px-2 pb-2 border-b'>
+                        <ul className='w-full px-2 py-2 border-b'>
                             <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
                                 <FontAwesomeIcon icon={faHome} />
                                 <p>Home</p>
@@ -101,8 +100,6 @@ function SideNav() {
                         </ul>
                     </div>
                 </div>
-                <Maincontainer category={category} />
-            </div>
 
         </>
     )
