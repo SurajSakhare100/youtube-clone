@@ -12,7 +12,7 @@ function videoApi(category) {
       .then((response) => response.json())
       .then((data) =>{
       setdata(data.items)
-      console.log(data)}
+    }
       );
    
     }

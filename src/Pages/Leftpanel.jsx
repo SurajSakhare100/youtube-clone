@@ -4,11 +4,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import Comment from '../Component/Comment';
 import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
+import channelapi from '../Api/Channeldata';
 function Leftpanel({ videoid, videoNum }) {
-
     const [api, setapi] = useState(null);
-    const [channeldata, setchanneldata] = useState(null);
+    const channeldata = channelapi(api)
     const [commentdata, setcommentdata] = useState(null);
+    console.log(channeldata)
     const fetchapi = async () => {
         const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
         const video_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoNum}&maxResults=200&key=${API}`;
@@ -17,17 +18,7 @@ function Leftpanel({ videoid, videoNum }) {
             .then((response) => response.json())
             .then((data) => setapi(data.items[0]));
     }
-    const fetchchannel = async () => {
-        const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
-        const video_url =
-            `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${api.snippet.channelId}&key=${API}`
-        await fetch(video_url)
-            .then((response) => response.json())
-            .then((data) => setchanneldata(data.items[0]));
-    }
-    useEffect(() => {
-        fetchapi();
-    }, [videoid]);
+    
     const fetchcomment = async () => {
         const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
         const video_url =
@@ -42,11 +33,12 @@ function Leftpanel({ videoid, videoNum }) {
     useEffect(() => {
         fetchapi();
     }, [videoid]);
-    useEffect(() => {
-        fetchchannel();
-    }, [api]);
+    
     useEffect(() => {
         fetchcomment();
+    }, [videoid]);
+    useEffect(() => {
+        fetchapi();
     }, [videoid]);
     return (
         <>
