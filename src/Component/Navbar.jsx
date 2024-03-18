@@ -9,8 +9,7 @@ import { useapi } from '../context/Youtube'
 function Navbar() {
     const { searchtitle, setSearchtitle } = useapi()
     const [input, setinput] = useState('')
-    const handlesubmit = (e) => {
-        e.preventDefault()
+    const handlesubmit = () => {
         setSearchtitle(input)
     }
 
@@ -24,20 +23,18 @@ function Navbar() {
                 </div>
                 <div className='md:flex md:gap-4 md:items-center hidden'>
                     <div className='h-full flex items-center justify-center relative '>
-                        <form >
-                            <input
-                                type="text"
-                                placeholder='Search'
-                                className='md:w-[350px] texl-xl lg:w-[500px] xl:w-[700px] md:h-full bg-black rounded-3xl outline-1 outline-slate-100 py-2 px-2 outline-none text-white '
-                                value={input}
-                                onChange={(e) => { setinput(e.target.value) }}
-                            />
-                            <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl shadow px-6 flex items-center justify-center rounded-l-none '>
-                                <button type='submit'>
-                                    <FontAwesomeIcon icon={faSearch} className='text-white md:w-[20px] md:h-[20px]' />
-                                </button>
-                            </div>
-                        </form>
+                        <input
+                            type="text"
+                            placeholder='Search'
+                            className='md:w-[350px] texl-xl lg:w-[500px] xl:w-[700px] md:h-full bg-black rounded-3xl outline-1 outline-slate-100 py-2 px-2 outline-none text-white '
+                            value={input}
+                            onChange={(e) => { setinput(e.target.value) }}
+                        />
+                        <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl shadow px-6 flex items-center justify-center rounded-l-none '>
+                            <Link to={'search'} onClick={() => handlesubmit()}>
+                                <FontAwesomeIcon icon={faSearch} className='text-white md:w-[20px] md:h-[20px]' />
+                            </Link>
+                        </div>
                     </div>
                     <div className='ml-2'>
                         <FontAwesomeIcon icon={faMicrophone} className='text-white w-[30px] h-[20px] bg-[#262626] px-1 py-2 rounded-full' />

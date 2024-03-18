@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faVault, faVial } from '@fortawesome/free-solid-svg-icons'
 import { faViacoin, faViadeo } from '@fortawesome/free-brands-svg-icons'
 import Maincontainer from './Maincontainer'
+import { useapi } from '../context/Youtube'
 function SideNav() {
-     const [category, setCategory] = useState(0);
+    const { category,setCategory } = useapi();
     return (
         <>
                 <div className='md:w-[250px] bg-black mt-12'>

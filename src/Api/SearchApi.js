@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from "react";
 const Searchapi = (searchtitle) => {
   const [data, setdata] = useState([]);
+  console.log(searchtitle)
   const fetchbySearch = async () => {
     const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
     const video_url =
@@ -8,7 +9,6 @@ const Searchapi = (searchtitle) => {
     await fetch(video_url)
       .then((response) => response.json())
       .then((data) => {
-        setdata(data.items);
       });
     };
   useEffect(() => {
