@@ -4,8 +4,11 @@ import { faHome, faVault, faVial } from '@fortawesome/free-solid-svg-icons'
 import { faViacoin, faViadeo } from '@fortawesome/free-brands-svg-icons'
 import Maincontainer from './Maincontainer'
 import { useapi } from '../context/Youtube'
+import channelapi from '../Api/Channeldata'
+import fetchvideo from '../Api/Video'
 function SideNav() {
-    const { category,setCategory } = useapi();
+    const { category,setCategory,channeldata } = useapi();
+    console.log(channeldata)
     return (
         <>
                 <div className='md:w-[250px] bg-black mt-12'>

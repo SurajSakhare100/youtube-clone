@@ -8,7 +8,7 @@ function App() {
       <UseYoutube>
         <Navbar />
         <div className='w-full h-screen flex overflow-scroll'>
-          <SideNav />
+          
           <Outlet />
         </div>
       </UseYoutube>

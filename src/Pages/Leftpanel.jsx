@@ -6,40 +6,7 @@ import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import channelapi from '../Api/Channeldata';
 function Leftpanel({ videoid, videoNum }) {
-    const [api, setapi] = useState(null);
-    const channeldata = channelapi(api)
-    const [commentdata, setcommentdata] = useState(null);
-    console.log(channeldata)
-    const fetchapi = async () => {
-        const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
-        const video_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoNum}&maxResults=200&key=${API}`;
 
-        await fetch(video_url)
-            .then((response) => response.json())
-            .then((data) => setapi(data.items[0]));
-    }
-    
-    const fetchcomment = async () => {
-        const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
-        const video_url =
-            `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoNum}&key=${API}`
-        await fetch(video_url)
-            .then((response) => response.json())
-            .then((data) => 
-            {setcommentdata(data.items)
-            console.log(data)}
-            );
-    }
-    useEffect(() => {
-        fetchapi();
-    }, [videoid]);
-    
-    useEffect(() => {
-        fetchcomment();
-    }, [videoid]);
-    useEffect(() => {
-        fetchapi();
-    }, [videoid]);
     return (
         <>
             <div className='w-full md:w-full pt-4 px-10'>

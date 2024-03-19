@@ -5,11 +5,13 @@ import moment from 'moment';
 import valueConverter from '../Component/valueConverter';
 import { useapi } from '../context/Youtube';
 import thumbnail1 from '../assets/thumbnail1.png'
+import SideNav from './SideNav';
 function Search() {
     const { search, setSearch, searchtitle, setSearchtitle } = useapi();
-    const [searchResult, setSearchResult] = useState(Searchapi(searchtitle));
+    const searchResult=Searchapi(searchtitle)
     return (
         <>
+      <SideNav />
             <div className={`w-full h-auto overflow-y-auto pt-20 bg-black px-10 text-white shadow-md flex flex-col gap-14 items-center`}>
                 {searchResult.map((items, index) => {
                     return (
