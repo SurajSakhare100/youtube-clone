@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import {YoutubeProvider } from './Youtube';
+import { YoutubeProvider } from './Youtube';
 import Searchapi from '../Api/SearchApi';
 import channelapi from '../Api/Channeldata';
 import videoApi from '../Api/VideoCategory';
-function UseYoutube({children}) {
+function UseYoutube({ children }) {
   const [category, setCategory] = useState(0);
-  const api=videoApi(category);
-  const c=channelapi(api)
-  const [search,setSearch]=useState(Searchapi())
-  const [searchtitle,setSearchtitle]=useState('')
-  const [channeldata,setchanneldata]=useState(c)
+  const [searchtitle, setSearchtitle] = useState('')
+  const [search, setSearch] = useState(Searchapi(searchtitle))
+  
+  const [channeldata, setchanneldata] = useState(null)
   return (
-    <YoutubeProvider value={{search,setSearch,searchtitle,category,setSearchtitle,setCategory,channeldata,setchanneldata}}>
+    <YoutubeProvider value={{ search, setSearch, searchtitle, category, setSearchtitle, setCategory, channeldata, setchanneldata }}>
       {children}
     </YoutubeProvider>
   )

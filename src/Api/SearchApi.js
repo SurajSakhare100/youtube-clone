@@ -8,7 +8,7 @@ const Searchapi = (searchtitle) => {
     await fetch(video_url)
       .then((response) => response.json())
       .then((data) => {
-        setdata(data)
+        setdata(data.items)
       });
     };
   useEffect(() => {

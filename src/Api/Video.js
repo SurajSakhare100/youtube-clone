@@ -14,6 +14,7 @@ function fetchvideo(category) {
   useEffect(() => {
     fetchapi();
   }, [category]);
+  console.log(api)
   return api
 }
 export default fetchvideo;

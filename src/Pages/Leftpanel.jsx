@@ -5,8 +5,15 @@ import Comment from '../Component/Comment';
 import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import channelapi from '../Api/Channeldata';
+import UseYoutube from '../context/UseYoutube';
+import { useapi } from '../context/Youtube';
+import videoApi from '../Api/VideoCategory';
+import fetchvideo from '../Api/Video';
 function Leftpanel({ videoid, videoNum }) {
+  const api= fetchvideo(videoid);
+  const channeldata=channelapi(api)
 
+    // const channeldata=channelapi(api)
     return (
         <>
             <div className='w-full md:w-full pt-4 px-10'>
