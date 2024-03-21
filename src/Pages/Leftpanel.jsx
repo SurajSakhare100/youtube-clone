@@ -10,10 +10,9 @@ import { useapi } from '../context/Youtube';
 import videoApi from '../Api/VideoCategory';
 import fetchvideo from '../Api/Video';
 function Leftpanel({ videoid, videoNum }) {
-  const api= fetchvideo(videoid);
+  const api= fetchvideo(videoNum);
   const channeldata=channelapi(api)
 
-    // const channeldata=channelapi(api)
     return (
         <>
             <div className='w-full md:w-full pt-4 px-10'>
@@ -58,12 +57,7 @@ function Leftpanel({ videoid, videoNum }) {
                     <h2 className='text-xl font-bold'>Comment</h2>
                     <p>{valueConverter(api ? api.statistics.commentCount : '')}</p>
                 </div>
-                <p></p>
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
+                <Comment videoid={videoNum}/>
             </div>
         </>
     )

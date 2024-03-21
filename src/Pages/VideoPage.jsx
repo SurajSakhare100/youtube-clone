@@ -12,7 +12,7 @@ function VideoPage() {
       <Navbar/>
     <div className='w-full h-fit px-10 pt-16 flex gap-4 bg-black text-white'>
       <Leftpanel videoid={videoids} videoNum={videoNum}/>
-      <Rightpanel/>
+      <Rightpanel videoid={videoids} videoNum={videoNum}/>
     </div>
     </>
   )

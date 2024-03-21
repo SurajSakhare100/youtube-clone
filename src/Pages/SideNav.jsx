@@ -7,6 +7,9 @@ import { useapi } from '../context/Youtube'
 import channelapi from '../Api/Channeldata'
 import fetchvideo from '../Api/Video'
 function SideNav() {
+    const api= fetchvideo('fiQ2TSQ23Wo');
+    const channeldata=channelapi(api)
+    console.log(channeldata)
     return (
         <>
                 <div className='md:w-[250px] bg-black mt-12'>
@@ -28,8 +31,8 @@ function SideNav() {
                         <ul className='w-full px-2 pb-2 border-b py-1'>
                             <h1 className='text-white text-md my-2'>Subscriptions</h1>
                             <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
-                                <img src="src/assets/tom.png" width={30} height={30} className='rounded-full' />
-                                <p>Tom David</p>
+                                <img src={channeldata ? channeldata.snippet.thumbnails.default.url : ''} width={30} height={30} className='rounded-full' />
+                                <p>{ channeldata ? channeldata.snippet.title:''}</p>
                             </li>
                             <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
                                 <img src="src/assets/simon.png" width={30} height={30} className='rounded-full' />

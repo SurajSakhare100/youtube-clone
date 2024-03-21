@@ -12,7 +12,9 @@ function videoApi(category) {
         setdata(data.items);
       });
   }
-  fetchdata()
+  useEffect(() => {
+    fetchdata()
+  }, []);
   return data;
 }
 
