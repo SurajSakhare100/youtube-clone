@@ -11,7 +11,6 @@ const fetchcomment = async () => {
         .then((response) => response.json())
         .then((data) => 
         {setcommentdata(data.items)
-        console.log(data)
     }
         );
 }

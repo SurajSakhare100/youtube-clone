@@ -1,25 +1,30 @@
 import React from 'react'
 import Videosm from '../Component/Videosm'
 import recommendedapi from '../Api/recommended'
+import { Link } from "react-router-dom";
+import valueConverter from '../Component/valueConverter';
+import moment from 'moment';
 
-function Rightpanel() {
-  const recommended = recommendedapi(videoid)
+function Rightpanel({ videoid }) {
+  const data = recommendedapi(videoid)
 
   return (
-    <div className='w-full md:w-1/4  overflow-scroll'>
-      <div className='flex flex-col'>
+    <div className='w-1/3 overflow-scroll'>
+      <div className='flex flex-col gap-4'>
         {data ?
           data.map((items, index) => {
             return (
               <div key={index}>
                 <Link
                   to={`/video/${items ? items.snippet.categoryId : ''}/${items ? items.id : ''}`}
+                  className='flex gap-4'
                 >
+                  <div className='w-1/2'>
+
                   <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full rounded-lg' />
-                  <div className='flex flex-row gap-4 pt-2 px-1'>
-                    <div className='w-1/8 flex-shrink-0'>
-                      <img src="src/assets/simon.png" width={50} height={50} className='rounded-full' />
-                    </div>
+                  </div>
+                  <div className='flex flex-row gap-4 pt-2 px-1 w-1/2'>
+                    
                     <div className='w-7/8'>
                       <h2 className='text-sm font-bold'>{items ? items.snippet.title : ''}</h2>
                       <h4 className='text-[14px]'>

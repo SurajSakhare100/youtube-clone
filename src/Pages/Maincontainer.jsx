@@ -1,19 +1,19 @@
 import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import valueConverter from '../Component/valueConverter';
 import videoApi from '../Api/VideoCategory';
 import { useapi } from '../context/Youtube';
 import fetchvideo from '../Api/Video';
 import channelapi from '../Api/Channeldata';
 function Maincontainer() {
-  const { category, setCategory } = useapi();
-  const data = videoApi(category)
- 
+  const { category, setCategory,data } = useapi();
   return (
+
     <div className='w-full h-auto overflow-scroll pt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
       {data ?
         data.map((items, index) => {
+          const ch_img=channelapi(items?items.snippet.channelId:"")
           return (
             <div key={index}>
               <Link
@@ -22,7 +22,7 @@ function Maincontainer() {
                 <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full rounded-lg' />
                 <div className='flex flex-row gap-4 pt-2 px-1'>
                   <div className='w-1/8 flex-shrink-0'>
-                    <img src="src/assets/simon.png" width={50} height={50} className='rounded-full' />
+                    <img src={ch_img} width={50} height={50} className='rounded-full' />
                   </div>
                   <div className='w-7/8'>
                     <h2 className='text-sm font-bold'>{items ? items.snippet.title : ''}</h2>

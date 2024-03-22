@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 function fetchvideo(videoid) {
   const [api, setapi] = useState(null);
+  console.log(videoid)
 
   const fetchapi = async () => {
     const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;

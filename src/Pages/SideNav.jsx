@@ -9,7 +9,7 @@ import fetchvideo from '../Api/Video'
 function SideNav() {
     const api= fetchvideo('fiQ2TSQ23Wo');
     const channeldata=channelapi(api)
-    console.log(channeldata)
+    const {category, setCategory}=useapi() 
     return (
         <>
                 <div className='md:w-[250px] bg-black mt-12'>
