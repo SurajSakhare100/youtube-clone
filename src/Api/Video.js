@@ -1,20 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
-function fetchvideo(videoid) {
-  const [api, setapi] = useState(null);
-  console.log(videoid)
-
-  const fetchapi = async () => {
+const fetchapi = async (videoid) => {
     const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
     const video_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoid}&maxResults=200&key=${API}`;
 
-    await fetch(video_url)
-      .then((response) => response.json())
-      .then((data) => setapi(data.items[0]));
+    try {
+        const response = await fetch(video_url);
+        const data = await response.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+    }
   };
-  useEffect(() => {
-    fetchapi();
-  }, [videoid]);
-  return api
-}
-export default fetchvideo;
+export default fetchapi;

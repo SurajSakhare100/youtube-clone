@@ -7,8 +7,10 @@ import { useapi } from '../context/Youtube'
 import channelapi from '../Api/Channeldata'
 import fetchvideo from '../Api/Video'
 function SideNav() {
-    const api= fetchvideo('fiQ2TSQ23Wo');
-    const channeldata=channelapi(api)
+    // const api= fetchvideo('fiQ2TSQ23Wo');
+    const channeldata=
+    null;
+    // channelapi(api);
     const {category, setCategory}=useapi() 
     return (
         <>
