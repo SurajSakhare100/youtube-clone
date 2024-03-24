@@ -32,12 +32,13 @@ function UseYoutube({ children }) {
     setSearch(data)
   }, [searchtitle])
 
-  useEffect(() => {
+  // useEffect(() => {
     
-  }, [videoid])
-  useEffect(() => {
-    setchanneldata(video)
-  }, [data])
+  // }, [videoid])
+  // useEffect(() => {
+  //   const api=channelapi(data)
+  //   setchanneldata(api)
+  // }, [setdata])
   
   useEffect(() => {
     const api=recommended(category)
