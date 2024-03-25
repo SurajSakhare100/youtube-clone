@@ -8,13 +8,14 @@ import UseYoutube from '../context/UseYoutube';
 import { useapi } from '../context/Youtube';
 import videoApi from '../Api/VideoCategory';
 import fetchvideo from '../Api/Video';
-function Leftpanel({ videoid, videoNum }) {
-  const { channelData,video } = useapi();
+function Leftpanel() {
+  const { channelData,video ,videoid} = useapi();
+  console.log(video)
     return (
         <>
             <div className='w-full md:w-2/3 pt-4 px-10'>
                 <div className='w-full'>
-                    <iframe src={`https://youtube.com/embed/${videoNum}`} className='w-full h-[550px]'></iframe>
+                    <iframe src={`https://youtube.com/embed/${videoid}`} className='w-full h-[550px]'></iframe>
                     {/* <video src="src/assets/video.mp4" controls muted  className='' rounded-lg '></video> */}
                     <div className='mt-2'>
                         <h2 className='text-xl'>

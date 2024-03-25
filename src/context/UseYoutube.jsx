@@ -12,8 +12,8 @@ function UseYoutube({ children }) {
   const [searchtitle, setSearchtitle] = useState('');
   const [search, setSearch] = useState([]);
   const {videocategory}=useParams();
-  const {videoid}=useParams();
 
+  const {videoid}=useParams();
   const [data,setdata]=useState([]);
   const [channeldata, setchanneldata] = useState([]);
   const [comment, setcomment] = useState([]);
@@ -32,9 +32,13 @@ function UseYoutube({ children }) {
     setSearch(data)
   }, [searchtitle])
 
-  // useEffect(() => {
-    
-  // }, [videoid])
+  useEffect(() => {
+    const data=fetchapi(videoid)
+    console.log('object')
+    data.then((result)=>{
+      setvideo(result.items)
+    })
+  }, [videoid,data,category])
   // useEffect(() => {
   //   const api=channelapi(data)
   //   setchanneldata(api)
@@ -59,7 +63,7 @@ function UseYoutube({ children }) {
         channeldata, setchanneldata,
         comment, setcomment,
         video, setvideo,
-        recommendedvideo,setrecommended 
+        recommendedvideo,setrecommended ,videoid
       }}
       >
       {children}
