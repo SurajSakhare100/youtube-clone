@@ -1,13 +1,11 @@
 import React from 'react'
-import Videosm from '../Component/Videosm'
-import recommendedapi from '../Api/recommended'
 import { Link } from "react-router-dom";
 import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import { useapi } from '../context/Youtube';
 
 function Rightpanel({ videoid }) {
-  const { category, setCategory,data } = useapi();
+  const { data } = useapi();
   return (
     <div className='w-1/3 overflow-scroll'>
       <div className='flex flex-col gap-4'>

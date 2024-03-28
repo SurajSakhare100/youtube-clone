@@ -7,7 +7,8 @@ import { useapi } from '../context/Youtube';
 import fetchvideo from '../Api/Video';
 import channelapi from '../Api/Channeldata';
 function Maincontainer() {
-  const { category, channelData,data } = useapi();
+  const { category, channelData,data,subScribe, setSubScribe } = useapi();
+  console.log(subScribe)
   if(data){
     return (
   <div className='w-full h-auto overflow-scroll pt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>

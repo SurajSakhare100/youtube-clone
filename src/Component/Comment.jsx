@@ -6,26 +6,27 @@ import commentapi from '../Api/comment';
 import fetchvideo from '../Api/Video';
 import valueConverter from './valueConverter';
 import moment from 'moment';
+import { useapi } from '../context/Youtube';
 
 
-function Comment({ videoid }) {
-    const data = commentapi(videoid)
+function Comment() {
+    const {comments,setComment}=useapi()
+    console.log(comments)
     return (
+        <>
         <div>
             <div className='flex flex-col gap-4 pt-2 px-1 my-2'>
-                {data ?
-                    data.map((items, index) => {
+                {comments ?
+                    comments.map((items, index) => {
                         return (
                             <div key={index} className='w-full flex flex-row gap-4'>
                                 <div>
                                 <img src={items.snippet.topLevelComment.snippet.authorProfileImageUrl} width={45} height={45} className='rounded-full' />
                                 </div>
-                                {/* <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full rounded-lg' /> */}
                                 <div>
                                     <div className='flex gap-2'>
                                     <h2 className='text-md font-bold'>{items.snippet.topLevelComment.snippet.authorDisplayName}</h2>
-                                    <p>{moment(items.snippet.topLevelComment.snippet.updatedAt).fromNow()}</p>
-                                    {/* <p>{Date('items.snippet.topLevelComment.snippet.updatedAt')}</p> */}
+                                    <p className='text-slate-400'>{moment(items.snippet.topLevelComment.snippet.updatedAt).fromNow()}</p>
                                     </div>
                                     <p className='text-[14px]'>
                                     {items.snippet.topLevelComment.snippet.textDisplay}
@@ -42,6 +43,7 @@ function Comment({ videoid }) {
                     }) : ""}
             </div>
         </div >
+        </>
     )
 }
 

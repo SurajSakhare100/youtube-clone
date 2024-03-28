@@ -7,13 +7,13 @@ import { useapi } from '../context/Youtube';
 import thumbnail1 from '../assets/thumbnail1.png'
 import SideNav from './SideNav';
 function Search() {
-    const { search, setSearch, searchtitle, setSearchtitle } = useapi();
-    const searchResult=Searchapi(searchtitle)
+    const { searchResults, setSearchResults,searchTitle} = useapi();
+    console.log(searchTitle)
     return (
         <>
       <SideNav />
             <div className={`w-full h-auto overflow-y-auto pt-20 bg-black px-10 text-white shadow-md flex flex-col gap-14 items-center`}>
-                {searchResult.map((items, index) => {
+                {searchResults?searchResults.map((items, index) => {
                     return (
                         <div key={index} className='w-2/3 h-1/2 '>
                             <Link
@@ -39,7 +39,7 @@ function Search() {
                             </Link>
                         </div>
                     )
-                })}
+                }):''}
             </div>
         </>
     )

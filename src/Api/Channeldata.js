@@ -1,21 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useapi } from "../context/Youtube";
+import { useState } from "react";
 
-const channelapi=(api)=>{
-    const datas=[];
-     api.map(async(api,i)=>{
-            const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
-            const video_url =
-                `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${api.snippet.channelId}&key=${API}`
-            await fetch(video_url)
-                .then((response) => response.json())
-                .then((data) => {
-                    datas.append(data.items[0])
-                });
-    })
-    console.log(datas)
-    }
+const channelapi = async (videoid) => {
+  const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
+  const video_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoid}&key=${API}`;
+  const response = await fetch(video_url);
+  const data = await response.json();
+  return data.items[0];
+};
 
-
-export default channelapi
+export default channelapi;

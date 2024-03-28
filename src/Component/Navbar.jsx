@@ -3,14 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons'
 import youtube from '../assets/youtube.png'
 import { Link } from 'react-router-dom'
-import Searchapi from '../Api/SearchApi'
 import { useapi } from '../context/Youtube'
 
 function Navbar() {
-    const { searchtitle, setSearchtitle } = useapi()
+    const {searchTitle, setSearchTitle } = useapi()
     const [input, setinput] = useState('')
     const handlesubmit = () => {
-        setSearchtitle(input)
+       setSearchTitle(input)
     }
 
     return (
