@@ -11,7 +11,6 @@ import { useapi } from '../context/Youtube';
 
 function Comment() {
     const {comments,setComment}=useapi()
-    console.log(comments)
     return (
         <>
         <div>

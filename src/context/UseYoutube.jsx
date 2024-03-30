@@ -7,22 +7,26 @@ import CommentApi from '../Api/comment';
 import RecommendedApi from '../Api/recommended';
 import FetchApi from '../Api/Video';
 import channelapi from '../Api/Channeldata';
+import channelInfo from '../Api/ChannelInfo';
 
 function UseYoutube({ children }) {
   const { videoCategory, videoid } = useParams();
   const [category, setCategory] = useState(0);
   const [searchTitle, setSearchTitle] = useState('');
-  const [subScribe, setSubScribe] = useState('');
+  const [subScribe, setSubScribes] = useState([]);
   const [searchResults, setSearchResults] = useState(null);
   const [data, setData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [comments, setComments] = useState(null);
   const [videoDetails, setVideoDetails] = useState([]);
   const [recommendedVideos, setRecommendedVideos] = useState([]);
+  const [channelInfos, setchannelInfo] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        1
         const result = await VideoApi(category);
         setData(result.items);
       } catch (error) {
@@ -32,6 +36,7 @@ function UseYoutube({ children }) {
 
     fetchData();
   }, [category]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,17 +103,56 @@ function UseYoutube({ children }) {
     fetchData();
   }, [videoid]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await channelInfo(channelData?'':channelData.snippet.channelId);
+        setchannelInfo(channelInfos)
+        console.log(channelData.snippet.channelId)
+      } catch (error) {
+        console.log('Error fetching comments:', error);
+      }
+    };
+
+    fetchData();
+  }, [videoid],channelData);
+
+
+
+  const addSubscribe = (subscribe) => {
+    setSubScribes((prev) => [{ ...subscribe }, ...prev])
+  }
+
+  useEffect(() => {
+    const store = localStorage.getItem("store");
+    if (store) {
+      try {
+        const store2 = JSON.parse(store);
+        if (Array.isArray(store2) && store2.length > 0) {
+          // Assuming setSubScribes is defined correctly as a state setter function
+          setSubScribes(store2);
+        }
+      } catch (error) {
+        console.error('Error parsing JSON from localStorage:', error);
+      }
+    }
+  }, [])
+  useEffect(() => {
+    localStorage.setItem("store", JSON.stringify(subScribe))
+  }, [subScribe])
   const contextValue = {
-    searchResults,setSearchResults,
-    category,setCategory,
+    searchResults, setSearchResults,
+    category, setCategory,
     data, setData,
-    channelData,setChannelData,
-    videoDetails,setVideoDetails,
-    recommendedVideos,setRecommendedVideos,
-    videoid,videoCategory,
-    comments,setComments,
+    channelData, setChannelData,
+    videoDetails, setVideoDetails,
+    recommendedVideos, setRecommendedVideos,
+    videoid, videoCategory,
+    comments, setComments,
     searchTitle, setSearchTitle,
-    subScribe, setSubScribe
+    subScribe, setSubScribes,
+    addSubscribe,
+    channelInfos,setchannelInfo
   };
 
   return (
