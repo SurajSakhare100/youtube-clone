@@ -20,7 +20,7 @@ function UseYoutube({ children }) {
   const [comments, setComments] = useState(null);
   const [videoDetails, setVideoDetails] = useState([]);
   const [recommendedVideos, setRecommendedVideos] = useState([]);
-  const [channelInfos, setchannelInfo] = useState([]);
+  const [channelInfos, setchannelInfo] = useState(null);
 
 
   useEffect(() => {
@@ -106,21 +106,29 @@ function UseYoutube({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await channelInfo(channelData?'':channelData.snippet.channelId);
-        setchannelInfo(channelInfos)
-        console.log(channelData.snippet.channelId)
+        const result = await channelInfo(channelData ? channelData.snippet.channelId : "");
+        setchannelInfo(result)
       } catch (error) {
         console.log('Error fetching comments:', error);
       }
     };
 
     fetchData();
-  }, [videoid],channelData);
+  }, [videoid, channelData]);
 
 
 
-  const addSubscribe = (subscribe) => {
-    setSubScribes((prev) => [{ ...subscribe }, ...prev])
+  const addSubscribe = (subscribe, id) => {
+    let a = 0;
+    for (let i = 0; i < subScribe.length; i++) {
+      if (subScribe[i].id != id) {
+        a++;
+      }
+    }
+    a == subScribe.length ? setSubScribes((prev) => [{ ...subscribe }, ...prev]) : ''
+  }
+  const removeSubscribe = (id) => {
+    setSubScribes((prev) => prev.filter((sub) => sub.id !== id))
   }
 
   useEffect(() => {
@@ -139,7 +147,9 @@ function UseYoutube({ children }) {
   }, [])
   useEffect(() => {
     localStorage.setItem("store", JSON.stringify(subScribe))
-  }, [subScribe])
+  }, [subScribe, addSubscribe, channelInfos])
+
+
   const contextValue = {
     searchResults, setSearchResults,
     category, setCategory,
@@ -151,8 +161,8 @@ function UseYoutube({ children }) {
     comments, setComments,
     searchTitle, setSearchTitle,
     subScribe, setSubScribes,
-    addSubscribe,
-    channelInfos,setchannelInfo
+    addSubscribe, removeSubscribe,
+    channelInfos, setchannelInfo
   };
 
   return (

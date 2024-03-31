@@ -7,8 +7,20 @@ import moment from 'moment';
 import { useapi } from '../context/Youtube';
 import channelInfo from '../Api/ChannelInfo';
 function Leftpanel() {
-    const { channelData, videoid, addSubscribe, channelInfos } = useapi();
-    const [subscribing, setSubScribing] = useState('subscribe')
+    const { channelData, videoid, addSubscribe, channelInfos ,removeSubscribe,subScribe} = useapi();
+    const [subscribing, setSubScribing] = useState('SubScribe')
+    const isSubscribed=(id)=>{
+        console.log('object')
+        for (let i = 0; i < subScribe.length; i++) {
+            if(subScribe[i].id===id){
+                setSubScribing('UnSubScribe')
+            }
+        }
+        return subscribing
+    }
+    useEffect(() => {
+        setSubScribing('SubScribe')
+    }, [channelInfos])
     return (
         <>
             <div className='w-full md:w-2/3 pt-4 px-10'>
@@ -26,8 +38,8 @@ function Leftpanel() {
                     </div>
                     <div className='flex items-center justify-between my-2'>
                         <div className='flex gap-4 items-center overflow-hidden '>
-                            <div className='w-[60px] h-[60px] rounded-full flex-shrink-0'>
-                                <img src={channelInfos == [] ? channelInfos.snippet.thumbnails.default.url : ''} className='w-full h-full object-contain' />
+                            <div className='w-[40px] h-[40px] rounded-full flex-shrink-0'>
+                                <img src={channelInfos? channelInfos.snippet.thumbnails.default.url : ''} className='w-full h-full object-contain rounded-full' />
                             </div>
                             <div className='flex flex-col'>
                                 <h5>
@@ -36,8 +48,9 @@ function Leftpanel() {
                                 {/* <p>{valueConverter(channelData ?  channelData.snippet.vi: '1M')}</p> */}
                             </div>
                             <button className='px-6  text-sm h-[30px] bg-red-800 rounded-2xl' onClick={() => {
-                                subscribing == 'subscribe' ? addSubscribe({ title: channelData.snippet.channelTitle, img: channelData.snippet.thumbnails.default.url }) : ''
-                                subscribing == 'subscribe' ? setSubScribing('Unsubscribe') : setSubScribing('subscribe')
+                                subscribing == 'SubScribe' ? addSubscribe({ title: channelData.snippet.channelTitle, img: channelInfos.snippet.thumbnails.default.url,id:channelInfos.id },channelInfos.id) :removeSubscribe(channelInfos.id)
+                                subscribing == 'SubScribe' ? setSubScribing('UnSubScribe') : setSubScribing('SubScribe');
+                                isSubscribed(channelInfos.id)
                             }}>{subscribing}</button>
                         </div>
                         <div>
