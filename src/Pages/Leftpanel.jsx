@@ -9,17 +9,17 @@ import channelInfo from '../Api/ChannelInfo';
 function Leftpanel() {
     const { channelData, videoid, addSubscribe, channelInfos ,removeSubscribe,subScribe} = useapi();
     const [subscribing, setSubScribing] = useState('SubScribe')
-    const isSubscribed=(id)=>{
-        console.log('object')
+    const handleSubmit=(id)=>{
+        let a=true;
         for (let i = 0; i < subScribe.length; i++) {
             if(subScribe[i].id===id){
-                setSubScribing('UnSubScribe')
+                a=false;
             }
         }
-        return subscribing
+        a?setSubScribing('SubScribe'):setSubScribing('UnSubScribe')
     }
     useEffect(() => {
-        setSubScribing('SubScribe')
+        handleSubmit(channelInfos?.id)
     }, [channelInfos])
     return (
         <>
@@ -47,10 +47,12 @@ function Leftpanel() {
                                 </h5>
                                 {/* <p>{valueConverter(channelData ?  channelData.snippet.vi: '1M')}</p> */}
                             </div>
-                            <button className='px-6  text-sm h-[30px] bg-red-800 rounded-2xl' onClick={() => {
+                            <button className='px-6  text-sm h-[30px] bg-red-800 rounded-2xl'
+                             onClick={() => {
+                                
                                 subscribing == 'SubScribe' ? addSubscribe({ title: channelData.snippet.channelTitle, img: channelInfos.snippet.thumbnails.default.url,id:channelInfos.id },channelInfos.id) :removeSubscribe(channelInfos.id)
                                 subscribing == 'SubScribe' ? setSubScribing('UnSubScribe') : setSubScribing('SubScribe');
-                                isSubscribed(channelInfos.id)
+                               
                             }}>{subscribing}</button>
                         </div>
                         <div>

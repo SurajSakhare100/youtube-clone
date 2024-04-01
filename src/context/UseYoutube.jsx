@@ -8,9 +8,10 @@ import RecommendedApi from '../Api/recommended';
 import FetchApi from '../Api/Video';
 import channelapi from '../Api/Channeldata';
 import channelInfo from '../Api/ChannelInfo';
+import channelSection from '../Api/channelSections';
 
 function UseYoutube({ children }) {
-  const { videoCategory, videoid } = useParams();
+  const { videoCategory, videoid, channelId} = useParams();
   const [category, setCategory] = useState(0);
   const [searchTitle, setSearchTitle] = useState('');
   const [subScribe, setSubScribes] = useState([]);
@@ -21,6 +22,8 @@ function UseYoutube({ children }) {
   const [videoDetails, setVideoDetails] = useState([]);
   const [recommendedVideos, setRecommendedVideos] = useState([]);
   const [channelInfos, setchannelInfo] = useState(null);
+  const [channelSections, setchannelSections] = useState(null);
+  const [menu, setmenu] = useState('');
 
 
   useEffect(() => {
@@ -108,6 +111,7 @@ function UseYoutube({ children }) {
       try {
         const result = await channelInfo(channelData ? channelData.snippet.channelId : "");
         setchannelInfo(result)
+        console.log(result)
       } catch (error) {
         console.log('Error fetching comments:', error);
       }
@@ -116,6 +120,19 @@ function UseYoutube({ children }) {
     fetchData();
   }, [videoid, channelData]);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await channelSection(channelInfos ?channelInfos.id:'');
+        setchannelSections(result)
+      } catch (error) {
+        console.log('Error fetching comments:', error);
+      }
+    };
+
+    fetchData();
+  }, [channelInfos]);
 
 
   const addSubscribe = (subscribe, id) => {
@@ -157,12 +174,13 @@ function UseYoutube({ children }) {
     channelData, setChannelData,
     videoDetails, setVideoDetails,
     recommendedVideos, setRecommendedVideos,
-    videoid, videoCategory,
+    videoid, videoCategory,channelId,
     comments, setComments,
     searchTitle, setSearchTitle,
     subScribe, setSubScribes,
     addSubscribe, removeSubscribe,
-    channelInfos, setchannelInfo
+    channelInfos, setchannelInfo,
+    menu, setmenu
   };
 
   return (

@@ -6,13 +6,14 @@ import Maincontainer from './Maincontainer'
 import { useapi } from '../context/Youtube'
 import channelapi from '../Api/Channeldata'
 import fetchvideo from '../Api/Video'
+import { Link } from 'react-router-dom'
 function SideNav() {
     const channeldata = null;
 
-    const { category, subScribe, setSubScribe,setCategory } = useapi()
+    const { category, subScribe, setSubScribe,setCategory,channelInfos, setchannelInfo,menu } = useapi()
     return (
         <>
-            <div className='md:w-[250px] bg-black mt-12'>
+            <div className={`md:w-[250px] bg-black mt-12 ${menu}`}>
                 <div className='lg:w-full h-full hidden sm:hidden md:block overflow-y-auto'>
                     <ul className='w-full px-2 py-2 border-b'>
                         <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
@@ -34,10 +35,14 @@ function SideNav() {
                         {
                         subScribe.map((subscribe,id)=>{
                             return(
-                            <li key={id} className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
-                                <img src={subscribe.img} width={25} height={25} className='rounded-full' />
+                           <Link to={`channel/${subscribe.id}`} key={subscribe.id}>
+                            <li  className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
+                                <img src={subscribe.img} width={25} height={25} className='rounded-full'
+                                onClick={()=>{setchannelInfo(subscribe.id);
+                                console.log(subscribe.id)} }/>
                             <p>{subscribe.title}</p>
-                            </li>)
+                            </li></Link>
+                            )
                             
                         })
                        }
@@ -102,7 +107,9 @@ function SideNav() {
                     </ul>
                 </div>
             </div>
-
+            <div>
+                
+            </div>
         </>
     )
 }

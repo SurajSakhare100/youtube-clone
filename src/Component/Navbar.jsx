@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useapi } from '../context/Youtube'
 
 function Navbar() {
-    const {searchTitle, setSearchTitle } = useapi()
+    const {searchTitle, setSearchTitle,menu, setmenu } = useapi()
     const [input, setinput] = useState('')
     const handlesubmit = () => {
        setSearchTitle(input)
@@ -16,7 +16,7 @@ function Navbar() {
         <>
             <div className='flex flex-row items-center justify-between bg-black py-2 px-6 fixed w-full h-[8vh]'>
                 <div className='flex flex-row gap-2 items-center'>
-                    <FontAwesomeIcon icon={faBars} className='hover:rounded-full hover:bg-slate-900 text-xl p-3 text-white' />
+                    <FontAwesomeIcon icon={faBars} className='hover:rounded-full hover:bg-slate-900 text-xl p-3 text-white' onClick={()=>{menu==''?setmenu('hidden'):setmenu('')}}/>
                     <img src={youtube} width={25} height={20} />
                     <p className='text-xl font-bold font-sans text-white hidden sm:block'>YOUTUBE <sup className='text-sm font-normal'>IN</sup></p>
                 </div>
