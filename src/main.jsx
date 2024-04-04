@@ -7,6 +7,7 @@ import VideoPage from './Pages/VideoPage.jsx'
 import Home from './Pages/Home.jsx'
 import Search from './Pages/Search.jsx'
 import Channel from './Pages/Channel.jsx'
+import Auth from './Pages/Auth.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <Search />,
+      },
+      {
+        path: '/auth',
+        element: <Auth />,
       },
     ]
   }

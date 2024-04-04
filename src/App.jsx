@@ -6,7 +6,6 @@ function App() {
   return (
     <>
       <UseYoutube>
-        <Navbar />
         <div className='w-full h-screen flex overflow-scroll'>
           <Outlet />
         </div>

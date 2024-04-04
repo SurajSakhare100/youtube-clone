@@ -6,11 +6,13 @@ import valueConverter from '../Component/valueConverter';
 import { useapi } from '../context/Youtube';
 import thumbnail1 from '../assets/thumbnail1.png'
 import SideNav from './SideNav';
+import Navbar from '../Component/Navbar';
 function Search() {
     const { searchResults, setSearchResults,searchTitle} = useapi();
     console.log(searchTitle)
     return (
         <>
+        <Navbar/>
       <SideNav />
             <div className={`w-full h-auto overflow-y-auto pt-20 bg-black px-10 text-white shadow-md flex flex-col gap-14 items-center`}>
                 {searchResults?searchResults.map((items, index) => {

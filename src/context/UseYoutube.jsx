@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { YoutubeProvider } from './Youtube';
 import SearchApi from '../Api/SearchApi';
 import VideoApi from '../Api/VideoCategory';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CommentApi from '../Api/comment';
 import RecommendedApi from '../Api/recommended';
 import FetchApi from '../Api/Video';
@@ -10,9 +10,12 @@ import channelapi from '../Api/Channeldata';
 import channelInfo from '../Api/ChannelInfo';
 import channelSection from '../Api/channelSections';
 import channelPlayListsapi from '../Api/channelPlayList';
+import { ProviderId, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { ref, set } from 'firebase/database';
+import { db } from '../firebase/firebase';
 
 function UseYoutube({ children }) {
-  const { videoCategory, videoid, channelId} = useParams();
+  const { videoCategory, videoid, channelId } = useParams();
   const [category, setCategory] = useState(0);
   const [searchTitle, setSearchTitle] = useState('');
   const [subScribe, setSubScribes] = useState([]);
@@ -26,7 +29,7 @@ function UseYoutube({ children }) {
   const [channelSections, setchannelSections] = useState(null);
   const [channelPlayList, setchannelPlayList] = useState(null);
   const [menu, setmenu] = useState('');
-
+  const [authStatus,setauthStatus]=useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,7 +122,7 @@ function UseYoutube({ children }) {
     };
 
     fetchData();
-  }, [videoid, channelData,channelId]);
+  }, [videoid, channelData, channelId]);
 
 
   useEffect(() => {
@@ -133,7 +136,7 @@ function UseYoutube({ children }) {
     };
 
     fetchData();
-  }, [channelId,channelInfo,subScribe]);
+  }, [channelId, channelInfo, subScribe]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -146,7 +149,7 @@ function UseYoutube({ children }) {
     };
 
     fetchData();
-  }, [channelId,channelInfo,subScribe]);
+  }, [channelId, channelInfo, subScribe]);
 
 
   const addSubscribe = (subscribe, id) => {
@@ -160,6 +163,35 @@ function UseYoutube({ children }) {
   }
   const removeSubscribe = (id) => {
     setSubScribes((prev) => prev.filter((sub) => sub.id !== id))
+  }
+
+  const navigate=useNavigate();
+  useEffect(() => {
+    if(authStatus){
+        navigate('/')
+    }
+    else{
+      navigate('/auth')
+    }
+}, [authStatus])
+
+  //auth
+
+  const signingoogle = (auth, provider) => {
+    signInWithPopup(auth, provider).then(()=>setauthStatus(true))
+  }
+  const setDb = (email, username) => {
+    set(ref(db, 'users/' + username), {
+      email,
+      username
+    })
+  }
+  const signinemail = (auth, email, password,username) => {
+    createUserWithEmailAndPassword(auth, email, password).then((value) => {
+      console.log(value);
+      setDb(email, username );
+      setauthStatus(true)
+    }).catch((error)=>console.log(error,45))
   }
 
   useEffect(() => {
@@ -188,7 +220,7 @@ function UseYoutube({ children }) {
     channelData, setChannelData,
     videoDetails, setVideoDetails,
     recommendedVideos, setRecommendedVideos,
-    videoid, videoCategory,channelId,
+    videoid, videoCategory, channelId,
     comments, setComments,
     searchTitle, setSearchTitle,
     subScribe, setSubScribes,
@@ -196,7 +228,9 @@ function UseYoutube({ children }) {
     channelInfos, setchannelInfo,
     menu, setmenu,
     channelSections, setchannelSections,
-    channelPlayList, setchannelPlayList
+    channelPlayList, setchannelPlayList,
+    signingoogle, signinemail,
+    authStatus,setauthStatus
   };
 
   return (
