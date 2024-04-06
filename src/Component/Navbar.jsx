@@ -4,6 +4,8 @@ import { faBars, faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icon
 import youtube from '../assets/youtube.png'
 import { Link } from 'react-router-dom'
 import { useapi } from '../context/Youtube'
+import { signOut } from 'firebase/auth'
+import { auth } from '../Pages/SignUp'
 
 function Navbar() {
     const {searchTitle, setSearchTitle,menu, setmenu,setauthStatus } = useapi()
@@ -40,11 +42,11 @@ function Navbar() {
                     </div>
                 </div>
                 <div>
-                    {/* <div className='flex flex-row items-center justify-center gap-6'>
+                    <div className='flex flex-row items-center justify-center gap-6'>
                         <img src="src/assets/upload.png" className='w-[25px]' />
                         <img src="src/assets/notification.png" className='w-[25px]' />
-                        <img src="src/assets/jack.png" className='w-[30px] h-[30px] rounded-full' onClick={()=>setauthStatus(false)} />
-                    </div> */}
+                        <img src="src/assets/jack.png" className='w-[30px] h-[30px] rounded-full' onClick={()=>signOut(auth)} />
+                    </div>
                 </div>
             </div>
         </>

@@ -10,7 +10,7 @@ import channelapi from '../Api/Channeldata';
 import channelInfo from '../Api/ChannelInfo';
 import channelSection from '../Api/channelSections';
 import channelPlayListsapi from '../Api/channelPlayList';
-import { ProviderId, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { ProviderId, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 import { db } from '../firebase/firebase';
 
@@ -165,15 +165,6 @@ function UseYoutube({ children }) {
     setSubScribes((prev) => prev.filter((sub) => sub.id !== id))
   }
 
-  const navigate=useNavigate();
-  useEffect(() => {
-    if(authStatus){
-        navigate('/')
-    }
-    else{
-      navigate('/auth')
-    }
-}, [authStatus])
 
   //auth
 
@@ -186,12 +177,32 @@ function UseYoutube({ children }) {
       username
     })
   }
-  const signinemail = (auth, email, password,username) => {
-    createUserWithEmailAndPassword(auth, email, password).then((value) => {
-      console.log(value);
-      setDb(email, username );
-      setauthStatus(true)
-    }).catch((error)=>console.log(error,45))
+  const signinemail = ( auth,email, password,username) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+      
+    
+  }
+  const signUpEmail = ( auth,email, password,username) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    
   }
 
   useEffect(() => {

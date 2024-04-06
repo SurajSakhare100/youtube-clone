@@ -1,6 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
+// const firebaseConfig = {
+//   apiKey:String(import.meta.env.VITE_API_KEY),
+//   authDomain:String(import.meta.env.VITE_AUTH_DOMAIN),
+//   projectId:String(import.meta.env.VITE_PROJECT_ID),
+//   storageBucket:String(import.meta.env.VITE_STORAGE_BUCKET),
+//   messagingSenderId:String(import.meta.env.VITE_MESSAGING_SENDER_ID),
+//   appId:String(import.meta.env.VITE_APP_ID),
+//   databaseURL:String(import.meta.env.VITE_DATABASE_URL)
+// };
 const firebaseConfig = {
   apiKey: "AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE",
   authDomain: "clone-416114.firebaseapp.com",

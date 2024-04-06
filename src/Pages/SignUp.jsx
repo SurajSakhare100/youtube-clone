@@ -5,26 +5,26 @@ import { createUserWithEmailAndPassword ,getAuth,GoogleAuthProvider } from "fire
 import { getDatabase, ref, set } from 'firebase/database'
 import { db,app } from "../firebase/firebase";
 import { useapi } from '../context/Youtube';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-function Auth() {
+function SignUp() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
-    const {signingoogle,signinemail,authStatus}=useapi()
+    const {signingoogle,signUpEmail,authStatus}=useapi()
     const signwithgoogle=()=>{
         signingoogle(auth,provider)
     }
-    const signwithemail=()=>{
-        console.log(email,password)
-        signinemail(auth,email,password,username)
+    const signUpwithemail=()=>{
+        console.log(auth,password)
+        signUpEmail(auth,email,password,username)
     }
     
     return (
         <section className="w-full h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-            <div className=" w-[90%] md:w-1/2  flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
+            <div className=" w-[90%]  md:w-1/2  flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
 
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">
@@ -62,7 +62,7 @@ function Auth() {
                                     <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
                                 </div>
                             </div>
-                            <button type="submit" onClick={signwithemail} className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 shadow-md ">
+                            <button type="submit" onClick={signUpwithemail} className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 shadow-md ">
                                 Sign Up</button>
                             <div className='flex gap-2 items-center justify-center'>
                                 <div className='w-full h-[1px] bg-gray-500 '></div>
@@ -73,7 +73,7 @@ function Auth() {
                                 <img src={google} width={24} alt="dd" />
                                 Sign Up with Google</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Already have an account? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                                Already have an account? <Link to="/auth/signin" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
 
                             </p>
                         </div>
@@ -84,4 +84,4 @@ function Auth() {
     )
 }
 
-export default Auth
+export default SignUp
