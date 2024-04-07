@@ -7,36 +7,47 @@ import { useapi } from '../context/Youtube'
 import channelapi from '../Api/Channeldata'
 import fetchvideo from '../Api/Video'
 import { Link } from 'react-router-dom'
+import { FaHome, FaWifi } from 'react-icons/fa';
+import { height, width } from '@fortawesome/free-brands-svg-icons/fa42Group'
+import { FaHouse, FaHouseMedical } from 'react-icons/fa6'
+import { SiYoutubeshorts } from 'react-icons/si'
+import { MdOutlineSubscriptions } from 'react-icons/md'
+import { BsFire } from 'react-icons/bs'
+import { BiMusic } from 'react-icons/bi'
+import { PiMusicNoteLight } from 'react-icons/pi'
+import { IoGameController } from 'react-icons/io5'
+import { GrTrophy } from 'react-icons/gr'
+import { ImNewspaper } from 'react-icons/im'
 function SideNav() {
     const channeldata = null;
 
     const { category, subScribe, setSubScribe,setCategory,channelInfos, setchannelInfo,menu } = useapi()
     return (
         <>
-            <div className={`md:w-[250px] bg-black mt-12 ${menu}`}>
+            <div className={`md:w-[250px] pt-3 bg-[#0F0F0F]  mt-12 ${menu} `}>
                 <div className='lg:w-full h-full hidden sm:hidden md:block overflow-y-auto'>
-                    <ul className='w-full px-2 py-2 border-b'>
-                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
-                            <FontAwesomeIcon icon={faHome} />
+                    <ul className='w-full px-2 py-2 border-b mr-2 ml-2 border-[#2a2a2a]'>
+                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
+                            <FaHouse style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>Home</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
-                            <FontAwesomeIcon icon={faViacoin} />
+                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
+                            <SiYoutubeshorts style={{width:"20px",height:"20px",color:"white"}} />
                             <p>Shorts</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
-                            <FontAwesomeIcon icon={faVault} />
+                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
+                            <MdOutlineSubscriptions style={{width:"20px",height:"20px",color:"white"}} />
                             <p>Subscription</p>
                         </li>
                     </ul>
-                    <ul className='w-full px-2 pb-2 border-b py-1'>
-                        <h1 className='text-white text-md my-2'>Subscriptions</h1>
+                    <ul className='w-full mr-2 ml-2  border-b border-[#2a2a2a] py-2'>
+                        <h1 className='text-white text-md my-2 pl-2'>Subscriptions</h1>
                         <div>
                         {
                         subScribe.map((subscribe,id)=>{
                             return(
                            <Link to={`channel/${subscribe.id}`} key={subscribe.id}>
-                            <li  className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer'>
+                            <li  className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
                                 <img src={subscribe.img} width={25} height={25} className='rounded-full'
                                 onClick={()=>{setchannelInfo(subscribe.id);
                                 console.log(subscribe.id)} }/>
@@ -50,29 +61,29 @@ function SideNav() {
                        
                     </ul>
                     <ul className='w-full px-2 pb-2 border-b py-1'>
-                        <h1 className='text-white text-md my-2 font-medium'>Explore</h1>
-                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer' onClick={() => { setCategory(0) }}>
-                            <img src="src/assets/explore.png" width={25} height={25} className='rounded-full' />
+                        <h1 className='text-white text-lg my-2 font-medium'>Explore</h1>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(0) }}>
+                            <BsFire style={{width:"20px",height:"20px",color:"white"}} />
                             <p>Home</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer' onClick={() => { setCategory(10) }}>
-                            <img src="src/assets/music.png" width={25} height={25} className='rounded-full' />
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(10) }}>
+                            <PiMusicNoteLight style={{width:"20px",height:"20px",color:"white"}} />
                             <p>Music</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer' onClick={() => { setCategory(20) }}>
-                            <img src="src/assets/game_icon.png" width={25} height={25} className='rounded-full' />
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(20) }}>
+                            <IoGameController style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>Gaming</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer' onClick={() => { setCategory(28) }}>
-                            <img src="src/assets/tech.png" width={25} height={25} className='rounded-full' />
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(28) }}>
+                            <FaWifi style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>Tech</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer' onClick={() => { setCategory(25) }}>
-                            <img src="src/assets/news.png" width={25} height={25} className='rounded-full' />
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(25) }}>
+                        <ImNewspaper style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>News</p>
                         </li>
-                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-900 cursor-pointer' onClick={() => { setCategory(17) }}>
-                            <img src="src/assets/sports.png" width={25} height={25} className='rounded-full' />
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(17) }}>
+                        <GrTrophy style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>Sport</p>
                         </li>
                     </ul>
@@ -107,8 +118,33 @@ function SideNav() {
                     </ul>
                 </div>
             </div>
-            <div>
-                
+            <div className='absolute w-full h-[45px] bg-[#0F0F0F] bottom-0 left-0 '>
+            <ul className='w-full px-2 pb-2 border-b py-1 flex justify-center items-center'>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(0) }}>
+                            <BsFire style={{width:"20px",height:"20px",color:"white"}} />
+                            
+                        </li>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(10) }}>
+                            <PiMusicNoteLight style={{width:"20px",height:"20px",color:"white"}} />
+                            
+                        </li>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(20) }}>
+                            <IoGameController style={{width:"20px",height:"20px",color:"white"}}/>
+                            
+                        </li>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(28) }}>
+                            <FaWifi style={{width:"20px",height:"20px",color:"white"}}/>
+                           
+                        </li>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(25) }}>
+                        <ImNewspaper style={{width:"20px",height:"20px",color:"white"}}/>
+                           
+                        </li>
+                        <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(17) }}>
+                        <GrTrophy style={{width:"20px",height:"20px",color:"white"}}/>
+                            
+                        </li>
+                    </ul>
             </div>
         </>
     )

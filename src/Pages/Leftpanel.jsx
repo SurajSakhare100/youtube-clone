@@ -23,7 +23,7 @@ function Leftpanel() {
     }, [channelInfos])
     return (
         <>
-            <div className='w-full md:w-2/3 pt-4 px-10'>
+            <div className='w-full md:w-2/3 pt-4 px-10 bg-[#0F0F0F]'>
                 <div className='w-full'>
                     <iframe src={`https://youtube.com/embed/${videoid}`} className='w-full h-[550px]'></iframe>
                     {/* <video src="src/assets/video.mp4" controls muted  className='' rounded-lg '></video> */}

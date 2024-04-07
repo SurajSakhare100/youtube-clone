@@ -8,9 +8,13 @@ import fetchvideo from '../Api/Video';
 import channelapi from '../Api/Channeldata';
 function Maincontainer() {
   const { data} = useapi();
+
+  
   if(data){
     return (
-  <div className='w-full h-auto overflow-scroll pt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
+      
+  <div className='w-full h-auto overflow-scroll pt-14 bg-[#0F0F0F]  text-white shadow-md grid grid-cols-1 md:grid-cols-2 px-6 md:px-6 xl:grid-cols-3 gap-6 '>
+    
     {data ?
       data.map((items, index) => {
         return (
@@ -18,7 +22,7 @@ function Maincontainer() {
             <Link
               to={`/video/${items ? items.snippet.categoryId : ''}/${items ? items.id : ''}`}
             >
-              <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full rounded-lg' />
+              <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full m-auto rounded-lg' />
               <div className='flex flex-row gap-4 pt-2 px-1'>
                 <div className='w-1/8 flex-shrink-0'>
                   {/* <img src={channelData.snippet.thumbnails.default.url} width={50} height={50} className='rounded-full' /> */}

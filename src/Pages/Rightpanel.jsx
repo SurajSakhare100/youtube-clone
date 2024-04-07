@@ -7,7 +7,7 @@ import { useapi } from '../context/Youtube';
 function Rightpanel({ videoid }) {
   const { data } = useapi();
   return (
-    <div className='w-1/3 overflow-scroll'>
+    <div className='w-1/3 overflow-scroll bg-[#0F0F0F]' >
       <div className='flex flex-col gap-4'>
         {data ?
           data.map((items, index) => {

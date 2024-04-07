@@ -10,7 +10,7 @@ function VideoPage() {
   return (
     <>
       <Navbar/>
-    <div className='w-full h-fit px-10 pt-16 flex gap-4 bg-black text-white'>
+    <div className='w-full h-fit px-10 pt-16 flex gap-4 bg-[#0F0F0F] text-white'>
       <Leftpanel/>
       <Rightpanel />
     </div>
