@@ -169,7 +169,8 @@ function UseYoutube({ children }) {
   //auth
 
   const signingoogle = (auth, provider) => {
-    signInWithPopup(auth, provider).then(()=>setauthStatus(true))
+    console.log(provider)
+    signInWithPopup(auth, provider).then(()=>setauthStatus(true)).catch((err)=>console.log(err))
   }
   const setDb = (email, username) => {
     set(ref(db, 'users/' + username), {

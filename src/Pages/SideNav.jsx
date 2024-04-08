@@ -24,9 +24,9 @@ function SideNav() {
     const { category, subScribe, setSubScribe,setCategory,channelInfos, setchannelInfo,menu } = useapi()
     return (
         <>
-            <div className={`md:w-[250px] pt-3 bg-[#0F0F0F]  mt-12 ${menu} `}>
-                <div className='lg:w-full h-full hidden sm:hidden md:block overflow-y-auto'>
-                    <ul className='w-full px-2 py-2 border-b mr-2 ml-2 border-[#2a2a2a]'>
+            <div className={`md:w-[280px] pt-3 bg-[#0F0F0F]  mt-12 ${menu} `}>
+                <div className='lg:w-full h-full hidden sm:hidden md:block overflow-y-auto overflow-x-hidden'>
+                    <ul className='w-full px-1 py-2 border-b mr-2 ml-2 border-[#2a2a2a]'>
                         <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
                             <FaHouse style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>Home</p>
@@ -41,7 +41,7 @@ function SideNav() {
                         </li>
                     </ul>
                     <ul className='w-full mr-2 ml-2  border-b border-[#2a2a2a] py-2'>
-                        <h1 className='text-white text-md my-2 pl-2'>Subscriptions</h1>
+                        <h1 className='text-white text-lg my-2 pl-2'>Subscriptions</h1>
                         <div>
                         {
                         subScribe.map((subscribe,id)=>{
@@ -61,7 +61,7 @@ function SideNav() {
                        
                     </ul>
                     <ul className='w-full px-2 pb-2 border-b py-1'>
-                        <h1 className='text-white text-lg my-2 font-medium'>Explore</h1>
+                        <h1 className='text-white text-lg my-2 pl-2 font-medium'>Explore</h1>
                         <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(0) }}>
                             <BsFire style={{width:"20px",height:"20px",color:"white"}} />
                             <p>Home</p>
@@ -118,7 +118,7 @@ function SideNav() {
                     </ul>
                 </div>
             </div>
-            <div className='absolute w-full h-[45px] bg-[#0F0F0F] bottom-0 left-0 '>
+            <div className='absolute w-full h-[45px] bg-[#0F0F0F] bottom-0 left-0 sm:hidden'>
             <ul className='w-full px-2 pb-2 border-b py-1 flex justify-center items-center'>
                         <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(0) }}>
                             <BsFire style={{width:"20px",height:"20px",color:"white"}} />

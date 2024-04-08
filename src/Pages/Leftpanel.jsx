@@ -23,12 +23,12 @@ function Leftpanel() {
     }, [channelInfos])
     return (
         <>
-            <div className='w-full md:w-2/3 pt-4 px-10 bg-[#0F0F0F]'>
+            <div className='w-full sm:w-2/3 pt-4 px-2 sm:px-10 bg-[#0F0F0F]'>
                 <div className='w-full'>
-                    <iframe src={`https://youtube.com/embed/${videoid}`} className='w-full h-[550px]'></iframe>
+                    <iframe src={`https://youtube.com/embed/${videoid}`} className='w-full rounded-lg  h-[300px] sm:h-[550px]'></iframe>
                     {/* <video src="src/assets/video.mp4" controls muted  className='' rounded-lg '></video> */}
                     <div className='mt-2'>
-                        <h2 className='text-xl'>
+                        <h2 className='text-md md:text-xl'>
                             {channelData ? channelData.snippet.title : ""}
                         </h2>
                         <div className='flex gap-2 text-md'>
@@ -36,13 +36,13 @@ function Leftpanel() {
                             <p>{moment(channelData ? channelData.snippet.publishedAt : '').fromNow()}</p>
                         </div>
                     </div>
-                    <div className='flex items-center justify-between my-2'>
+                    <div className='flex flex-col-reverse md:flex-row md:items-center items-start justify-between my-4 gap-4 '>
                         <div className='flex gap-4 items-center overflow-hidden '>
                             <div className='w-[40px] h-[40px] rounded-full flex-shrink-0'>
                                 <img src={channelInfos? channelInfos.snippet.thumbnails.default.url : ''} className='w-full h-full object-contain rounded-full' />
                             </div>
                             <div className='flex flex-col'>
-                                <h5>
+                                <h5 className='text-md md:text-xl'>
                                     {channelData ? channelData.snippet.channelTitle : ""}
                                 </h5>
                                 {/* <p>{valueConverter(channelData ?  channelData.snippet.vi: '1M')}</p> */}
@@ -55,7 +55,7 @@ function Leftpanel() {
                                
                             }}>{subscribing}</button>
                         </div>
-                        <div>
+                        <div className=''>
                             <div className='flex gap-2'>
                                 <div className='w-auto px-6 text-sm h-[30px] bg-gray-900 rounded-2xl flex gap-4 items-center'>
                                     <FontAwesomeIcon icon={faHeart} className='' />
@@ -73,7 +73,9 @@ function Leftpanel() {
                     <h2 className='text-xl font-bold'>Comment</h2>
                     <p>{valueConverter(channelData ?channelData.statistics.commentCount : '')}</p>
                 </div> */}
+                <div className='hidden md:block'>
                 <Comment videoid={videoid} />
+                </div>
             </div>
         </>
     )

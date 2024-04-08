@@ -13,19 +13,19 @@ function Search() {
     return (
         <>
         <Navbar/>
-      <SideNav />
-            <div className={`w-full h-auto overflow-y-auto pt-20 bg-black px-10 text-white shadow-md flex flex-col gap-14 items-center`}>
+       <SideNav />
+            <div className={`w-full h-auto overflow-y-auto pt-20 bg-black px-2 md:px-10 text-white shadow-md flex flex-col gap-4 md:gap-14 items-center`}>
                 {searchResults?searchResults.map((items, index) => {
                     return (
-                        <div key={index} className='w-2/3 h-1/2 '>
+                        <div key={index} className='w-full md:w-2/3 h-1/2 '>
                             <Link
                                 to={`/video/24/${items ? items.id.videoId : ''}`}
-                                className='flex gap-4'
+                                className='flex gap-2 md:flex-row flex-col'
                             >
-                                <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-1/2 rounded-2xl' />
-                                <div className='flex flex-row gap-4 pt-2 px-1 w-1/2'>
+                                <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full md:w-1/2 rounded-2xl' />
+                                <div className='flex flex-row gap-4 pt-2 px-1 md:w-1/2'>
                                     <div className='w-1/8 flex-shrink-0'>
-                                        <img src="src/assets/simon.png" width={50} height={50} className='rounded-full' />
+                                        <img src="src/assets/simon.png" width={40} height={40} className='rounded-full' />
                                     </div>
                                     <div className='w-7/8'>
                                         <h2 className='text-sm font-bold'>{items ? items.snippet.title : ''}</h2>

@@ -13,7 +13,7 @@ function Maincontainer() {
   if(data){
     return (
       
-  <div className='w-full h-auto overflow-scroll pt-14 bg-[#0F0F0F]  text-white shadow-md grid grid-cols-1 md:grid-cols-2 px-6 md:px-6 xl:grid-cols-3 gap-6 '>
+  <div className='w-full h-auto overflow-y-scroll overflow-x-hidden pt-16 bg-[#0F0F0F] text-white shadow-md grid grid-cols-1 md:grid-cols-2 px-6 md:px-6 xl:grid-cols-3 gap-6 '>
     
     {data ?
       data.map((items, index) => {

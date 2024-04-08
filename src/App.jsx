@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <UseYoutube>
-        <div className='w-full h-screen flex overflow-scroll'>
+        <div className='w-full h-screen flex  overflow-y-auto' >
           <Outlet />
         </div>
       </UseYoutube>
