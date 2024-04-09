@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useapi } from '../context/Youtube';
 import SideNav from './SideNav';
 import Navbar from '../Component/Navbar';
+import { DiW3C } from 'react-icons/di';
 
 function Channel() {
   const { channelSections, channelPlayList } = useapi();
@@ -10,10 +11,19 @@ function Channel() {
   return (
     <>
       <SideNav />
-      <Navbar/>
+      <Navbar />
+      <div >
+        <div
+        >
+          <h5 className='text-md md:text-xl'>
+            {/* {channelDat ? channelData.snippet.channelTitle : ""} */}
+            
+          </h5>
+        </div>
+      </div>
       <div className='w-full h-auto overflow-scroll pt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
 
-        {channelPlayList ? channelPlayList.map((playlist,index )=> (
+        {channelPlayList ? channelPlayList.map((playlist, index) => (
           <div key={index}>
             <Link
               className=''
@@ -22,8 +32,8 @@ function Channel() {
               <img src={playlist.snippet.thumbnails.medium.url} alt="" />
             </Link>
           </div>
-          )) : ''}
-        </div>
+        )) : ''}
+      </div>
     </>
   )
 }

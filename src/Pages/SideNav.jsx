@@ -64,7 +64,7 @@ function SideNav() {
                         <h1 className='text-white text-lg my-2 pl-2 font-medium'>Explore</h1>
                         <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(0) }}>
                             <BsFire style={{width:"20px",height:"20px",color:"white"}} />
-                            <p>Home</p>
+                            <p>Trending</p>
                         </li>
                         <li className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer' onClick={() => { setCategory(10) }}>
                             <PiMusicNoteLight style={{width:"20px",height:"20px",color:"white"}} />
