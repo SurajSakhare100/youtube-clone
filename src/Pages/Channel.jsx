@@ -7,7 +7,20 @@ import { DiW3C } from 'react-icons/di';
 
 function Channel() {
   const { channelSections, channelPlayList } = useapi();
-  console.log(channelPlayList)
+  const { channelId } = useParams(); // Assuming channelId is part of the route params
+  const [channelData, setChannelData] = useState(null);
+
+  useEffect(() => {
+    // Fetch channel data from your backend API
+    fetch(`/api/channel/${channelId}`)
+      .then(response => response.json())
+      .then(data => setChannelData(data))
+      .catch(error => console.error('Error fetching channel data:', error));
+  }, [channelId]); // Fetch data whenever channelId changes
+
+  if (!channelData) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <SideNav />
@@ -39,3 +52,4 @@ function Channel() {
 }
 
 export default Channel
+
