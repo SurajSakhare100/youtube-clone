@@ -56,6 +56,11 @@ function SignIn() {
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                         Don't have an account? <Link to="/auth/SignUp" className="font-medium text-primary-600 hover:underline dark:text-primary-500">SignUp here</Link>
                     </p>
+                    <p className="text-sm font-light text-gray-500 dark:text-gray-400 p-0 m-0">Dummy Account :</p>
+                    <div className='flex gap-4'>
+                    <p className="text-sm  font-semibold text-gray-800 dark:text-gray-400 p-0 m-0">Email : abc@gmail.com</p>
+                    <p className="text-sm  font-semibold text-gray-500 dark:text-gray-400">password : abc123</p>
+                    </div>
                 </div>
             </div>
         </div>
