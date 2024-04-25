@@ -8,14 +8,11 @@ import { DiW3C } from 'react-icons/di';
 import moment from 'moment';
 
 function Channel() {
-  const {channelData, channelPlayList } = useapi();
-  const { channelId } = useParams(); // Assuming channelId is part of the route params
-
-  if (channelData) {
+  const {channelInfos, channelPlayList } = useapi();
+  if (!channelPlayList) {
     return <div>Loading...</div>;
   }
   else{
-console.log(channelPlayList)
 
     return (
       <>
@@ -25,7 +22,7 @@ console.log(channelPlayList)
           <div
           >
             <h5 className='text-md md:text-xl'>
-              {channelData ? channelData.snippet.channelTitle : ""}
+              {channelInfos ? channelInfos.snippet.channelTitle : ""}
               
             </h5>
           </div>
@@ -34,26 +31,21 @@ console.log(channelPlayList)
   
           {channelPlayList ? channelPlayList.map((playlist, index) => (
             <div key={index}>
-              {/* <Link
-                className=''
-                to={`/video/`}
-              >
-                <img src={playlist.snippet.thumbnails.medium.url} alt="" />
-              </Link> */}
+             
               <Link
              to={`/video/`}
             >
               <img src={playlist.snippet.thumbnails.medium.url} alt="" className='w-full m-auto rounded-lg' />
               <div className='flex flex-row gap-4 pt-2 px-1'>
                 <div className='w-1/8 flex-shrink-0'>
-                  <img src={channelData.snippet.thumbnails.default.url} width={50} height={50} className='rounded-full' />
+                  <img src={channelInfos.snippet.thumbnails.default.url} width={40} height={40} className='rounded-full' />
                 </div>
                 <div className='w-7/8'>
                   <h2 className='text-sm font-bold'>{playlist.snippet.localized.title}</h2>
                   <h4 className='text-[14px]'>
                   </h4>
                   <div className='flex gap-2 text-[12px]'>
-                    {/* <p>{valueConverter(items ? items.statistics.viewCount : '')} views &bull;</p> */}
+                    <p className='font-semibold'>{channelInfos? channelInfos.snippet.title : ''} </p>
                     <p>{moment(playlist ? playlist.snippet.publishedAt : '').fromNow()}</p>
                   </div>
                 </div>

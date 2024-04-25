@@ -114,7 +114,10 @@ function UseYoutube({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await channelInfo(channelData ? channelData.snippet.channelId : "");
+        const result = await channelInfo(
+          // channelData ? channelData.snippet.channelId : ""
+          channelId
+        );
         setchannelInfo(result)
       } catch (error) {
         console.log('Error fetching comments:', error);
