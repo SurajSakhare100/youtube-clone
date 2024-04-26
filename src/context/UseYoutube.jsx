@@ -139,7 +139,7 @@ function UseYoutube({ children }) {
     };
 
     fetchData();
-  }, [channelId, channelInfo, subScribe]);
+  }, [channelId, channelInfo, subScribe,channelData,channelInfos]);
 
   useEffect(() => {
     const fetchData = async () => {

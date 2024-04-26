@@ -9,7 +9,7 @@ import moment from 'moment';
 
 function Channel() {
   const {channelInfos, channelPlayList } = useapi();
-  if (!channelPlayList) {
+  if (channelPlayList) {
     return <div>Loading...</div>;
   }
   else{

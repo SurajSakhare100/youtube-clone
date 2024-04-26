@@ -6,6 +6,7 @@ import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import { useapi } from '../context/Youtube';
 import channelInfo from '../Api/ChannelInfo';
+import {Link} from 'react-router-dom'
 function Leftpanel() {
     const { channelData, videoid, addSubscribe, channelInfos ,removeSubscribe,subScribe} = useapi();
     const [subscribing, setSubScribing] = useState('SubScribe')
@@ -39,7 +40,9 @@ function Leftpanel() {
                     <div className='flex flex-col-reverse md:flex-row md:items-center items-start justify-between my-4 gap-4 '>
                         <div className='flex gap-4 items-center overflow-hidden '>
                             <div className='w-[40px] h-[40px] rounded-full flex-shrink-0'>
-                                <img src={channelInfos? channelInfos.snippet.thumbnails.default.url : ''} className='w-full h-full object-contain rounded-full' />
+<Link to={`/channel/${channelData?.id}`}>
+<img src={channelInfos?.snippet.thumbnails.default.url} width={40} height={40} className='rounded-full' />
+</Link>
                             </div>
                             <div className='flex flex-col'>
                                 <h5 className='text-md md:text-xl'>

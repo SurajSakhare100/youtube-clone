@@ -6,10 +6,13 @@ import videoApi from '../Api/VideoCategory';
 import { useapi } from '../context/Youtube';
 import fetchvideo from '../Api/Video';
 import channelapi from '../Api/Channeldata';
+import banner from '../Api/channelbanner';
 function Maincontainer() {
   const { data} = useapi();
 
-  
+  const a=banner();
+  console.log(a)
+
   if(data){
     return (
       
@@ -29,7 +32,7 @@ function Maincontainer() {
                 </div>
                 <div className='w-7/8'>
                   <h2 className='text-sm font-bold'>{items ? items.snippet.title : ''}</h2>
-                  <h4 className='text-[14px]'>
+                  <h4 className='text-[14px] my-0.2'>
                     {items ? items.snippet.channelTitle : ''}
                   </h4>
                   <div className='flex gap-2 text-[12px]'>
