@@ -9,31 +9,18 @@ import moment from 'moment';
 
 function Channel() {
   const {channelInfos, channelPlayList } = useapi();
-  if (channelPlayList) {
-    return <div>Loading...</div>;
-  }
-  else{
-
+  console.log(channelPlayList)
     return (
       <>
         <SideNav />
         <Navbar />
-        <div >
-          <div
-          >
-            <h5 className='text-md md:text-xl'>
-              {channelInfos ? channelInfos.snippet.channelTitle : ""}
-              
-            </h5>
-          </div>
-        </div>
         <div className='w-full h-auto overflow-scroll pt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
   
           {channelPlayList ? channelPlayList.map((playlist, index) => (
             <div key={index}>
              
               <Link
-             to={`/video/`}
+             to={`/playlist/${playlist.id}`}
             >
               <img src={playlist.snippet.thumbnails.medium.url} alt="" className='w-full m-auto rounded-lg' />
               <div className='flex flex-row gap-4 pt-2 px-1'>
@@ -57,8 +44,6 @@ function Channel() {
       </>
     )
   }
-  
-}
 
 export default Channel
 

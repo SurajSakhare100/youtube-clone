@@ -9,6 +9,7 @@ import Search from './Pages/Search.jsx'
 import Channel from './Pages/Channel.jsx'
 import SignIn from './Pages/SignIn.jsx'
 import SignUp from './Pages/SignUp.jsx'
+import ChannelVideo from './Pages/ChannelVideo.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'channel/:channelId',
         element: <Channel />,
+      },
+      {
+        path: 'playlist/:playlistId',
+        element:<ChannelVideo />,
       },
       {
         path: '/search',
