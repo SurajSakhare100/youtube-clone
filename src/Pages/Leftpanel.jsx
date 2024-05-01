@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom'
 function Leftpanel() {
     const { channelData, videoid, addSubscribe, channelInfos ,removeSubscribe,subScribe} = useapi();
     const [subscribing, setSubScribing] = useState('SubScribe')
+    console.log(channelInfos)
     const handleSubmit=(id)=>{
         let a=true;
         for (let i = 0; i < subScribe.length; i++) {

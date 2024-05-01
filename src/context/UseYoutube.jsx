@@ -114,9 +114,10 @@ function UseYoutube({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(channelData,channelId)
+      
         const result = await channelInfo(
-          // channelData ? channelData.snippet.channelId : ""
-          channelId
+          channelData ? channelData.snippet.channelId : channelId 
         );
         setchannelInfo(result)
       } catch (error) {

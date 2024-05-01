@@ -17,19 +17,19 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <Home />,
       },
       {
-        path: 'video/:videoCategory/:videoid',
+        path: '/video/:videoCategory/:videoid',
         element: <VideoPage />,
       },
       {
-        path: 'channel/:channelId',
+        path: '/channel/:channelId',
         element: <Channel />,
       },
       {
-        path: 'playlist/:playlistId',
+        path: '/playlist/:playlistId',
         element:<ChannelVideo />,
       },
       {

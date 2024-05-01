@@ -46,7 +46,7 @@ function SideNav() {
                         {
                         subScribe.map((subscribe,id)=>{
                             return(
-                           <Link to={`channel/${subscribe.id}`} key={subscribe.id}>
+                           <Link to={`/channel/${subscribe.id}`} key={subscribe.id}>
                             <li  className='flex flex-row justify-start items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
                                 <img src={subscribe.img} width={25} height={25} className='rounded-full'
                                 onClick={()=>{setchannelInfo(subscribe.id);
