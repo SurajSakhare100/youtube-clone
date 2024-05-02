@@ -14,7 +14,7 @@ function Rightpanel({ videoid }) {
             return (
               <div key={index} className='w-full flex flex-col'>
                 <Link
-                  to={`/video/${items ? items.snippet.categoryId : ''}/${items ? items.id : ''}`}
+                  to={`/video/${items ? items.id : ''}`}
                   className='w-full flex flex-col md:flex-row gap-4'
                 >
                   <div className='w-full px-2 md:w-1/2'>

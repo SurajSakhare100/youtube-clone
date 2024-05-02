@@ -13,6 +13,7 @@ import channelPlayListsapi from '../Api/channelPlayList';
 import { ProviderId, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 import { db } from '../firebase/firebase';
+import playListvideosapi from '../Api/playlistVideo';
 
 function UseYoutube({ children }) {
   const { videoCategory, videoid, channelId } = useParams();
@@ -96,7 +97,7 @@ function UseYoutube({ children }) {
     };
 
     fetchData();
-  }, [videoid]);
+  }, [videoid,playListvideosapi]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -114,8 +115,6 @@ function UseYoutube({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(channelData,channelId)
-      
         const result = await channelInfo(
           channelData ? channelData.snippet.channelId : channelId 
         );

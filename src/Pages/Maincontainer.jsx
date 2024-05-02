@@ -23,7 +23,7 @@ function Maincontainer() {
         return (
           <div key={index}>
             <Link
-              to={`/video/${items ? items.snippet.categoryId : ''}/${items ? items.id : ''}`}
+              to={`/video/${items ? items.id : ''}`}
             >
               <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full m-auto rounded-lg' />
               <div className='flex flex-row gap-4 pt-2 px-1'>

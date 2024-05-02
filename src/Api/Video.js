@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 const fetchapi = async (videoid) => {
   const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
   const video_url = `
