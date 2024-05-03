@@ -46,7 +46,7 @@ function ChannelVideo() {
       videos?videos.map((video, id) => (
         <div key={id}>
         <Link
-          to={`/video/${video ? videoIds[id].videoid : ''}`}
+          to={`/video/${videoIds?videoIds[id].contentDetails.videoId:''}`}
         >
           <img src={video ? video.snippet.thumbnails.medium.url : ''} alt="" className='w-full m-auto rounded-lg' />
           <div className='flex flex-row gap-4 pt-2 px-1'>

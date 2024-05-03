@@ -1,16 +1,30 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from "react-router-dom";
 import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import { useapi } from '../context/Youtube';
+import fetchVideos from '../Api/channnelVideo';
 
-function Rightpanel({ videoid }) {
-  const { data } = useapi();
+function Rightpanel() {
+  const { data,channelData} = useapi();
+  const [videos,setvideos]=useState('')
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetchVideos(channelData?channelData.snippet.channelId:'');
+        setvideos(result);
+      } catch (error) {
+        console.log('Error fetching comments:', error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(videos)
   return (
     <div className='w-full md:w-1/3 overflow-y-auto bg-[#0F0F0F]' >
       <div className='flex flex-col gap-4'>
-        {data ?
-          data.map((items, index) => {
+        {videos ?
+          videos.map((items, index) => {
             return (
               <div key={index} className='w-full flex flex-col'>
                 <Link
@@ -28,7 +42,7 @@ function Rightpanel({ videoid }) {
                         {items ? items.snippet.channelTitle : ''}
                       </h4>
                       <div className='flex gap-2 text-[12px]'>
-                        <p>{valueConverter(items ? items.statistics.viewCount : '')} views &bull;</p>
+                        {/* <p>{valueConverter(items ? items.statistics.viewCount : '')} views &bull;</p> */}
                         <p>{moment(items ? items.snippet.publishedAt : '').fromNow()}</p>
                       </div>
                     </div>

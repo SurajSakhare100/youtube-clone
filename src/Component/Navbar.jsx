@@ -35,7 +35,7 @@ function Navbar() {
                             onChange={(e) => { setinput(e.target.value) }}
                         />
                         <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl shadow px-6 flex items-center justify-center rounded-l-none '>
-                            <Link to={'search'} onClick={() => handlesubmit()}>
+                            <Link to={'/search'} onClick={() => handlesubmit()}>
                                 <FontAwesomeIcon icon={faSearch} className='text-white md:w-[20px] md:h-full' />
                             </Link>
                         </div>

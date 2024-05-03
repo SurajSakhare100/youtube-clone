@@ -9,7 +9,6 @@ import moment from 'moment';
 
 function Channel() {
   const {channelInfos, channelPlayList } = useapi();
-  console.log(channelPlayList)
     return (
       <>
         <SideNav />

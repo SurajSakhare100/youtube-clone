@@ -40,7 +40,7 @@ function Leftpanel() {
                     <div className='flex flex-col-reverse md:flex-row md:items-center items-start justify-between my-4 gap-4 '>
                         <div className='flex gap-4 items-center overflow-hidden '>
                             <div className='w-[40px] h-[40px] rounded-full flex-shrink-0'>
-<Link to={`/channel/${channelData?.id}`}>
+<Link to={`/channel/${channelData?channelData.snippet.channelId:''}`}>
 <img src={channelInfos?.snippet.thumbnails.default.url} width={40} height={40} className='rounded-full' />
 </Link>
                             </div>

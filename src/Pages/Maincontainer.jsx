@@ -10,9 +10,6 @@ import banner from '../Api/channelbanner';
 function Maincontainer() {
   const { data} = useapi();
 
-  const a=banner();
-  console.log(a)
-
   if(data){
     return (
       

@@ -7,9 +7,16 @@ import { useapi } from '../context/Youtube';
 import thumbnail1 from '../assets/thumbnail1.png'
 import SideNav from './SideNav';
 import Navbar from '../Component/Navbar';
+import channelInfo from '../Api/ChannelInfo';
 function Search() {
-    const { searchResults, setSearchResults,searchTitle} = useapi();
-    console.log(searchTitle)
+    const { searchResults, setSearchResults,searchTitle,channelInfos} = useapi();
+    const {channelLogo,setchannelLogo}=useState('');
+    // useEffect(async() => {
+    //     const result=await 
+    //     console.log(result)
+    //     setchannelLogo(result);
+    // }, [])
+    
     return (
         <>
         <Navbar/>
@@ -19,12 +26,14 @@ function Search() {
                     return (
                         <div key={index} className='w-full md:w-2/3 h-1/2 '>
                             <Link
-                                to={`/video/24/${items ? items.id.videoId : ''}`}
+                                to={`/video/${items ? items.id.videoId : ''}`}
                                 className='flex gap-2 md:flex-row flex-col'
                             >
                                 <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full md:w-1/2 rounded-2xl' />
                                 <div className='flex flex-row gap-4 pt-2 px-1 md:w-1/2'>
                                     <div className='w-1/8 flex-shrink-0'>
+                                {/* <img src={channelInfo(items.snippet.channelId).then((data)=>{return data})} width={40} height={40} className='rounded-full' /> */}
+                                       
                                         <img src="src/assets/simon.png" width={40} height={40} className='rounded-full' />
                                     </div>
                                     <div className='w-7/8'>
