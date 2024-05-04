@@ -11,7 +11,7 @@ function VideoPage() {
   return (
     <>
       <Navbar/>
-    <div className='w-full h-fit px-2 sm:px-10 pt-16 flex flex-col md:flex-row gap-4 bg-[#0F0F0F] text-white'>
+    <div className='w-full h-fit px-2 sm:px-10 pt-16 flex flex-col lg:flex-row gap-4 bg-[#0F0F0F] text-white'>
       <Leftpanel/>
       <Rightpanel />
       <div className='md:hidden block'>

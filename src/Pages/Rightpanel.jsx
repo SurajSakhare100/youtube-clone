@@ -6,7 +6,7 @@ import { useapi } from '../context/Youtube';
 import fetchVideos from '../Api/channnelVideo';
 
 function Rightpanel() {
-  const { data,channelData} = useapi();
+  const { channelData} = useapi();
   const [videos,setvideos]=useState('')
   useEffect(() => {
     const fetchData = async () => {
@@ -14,27 +14,26 @@ function Rightpanel() {
         const result = await fetchVideos(channelData?channelData.snippet.channelId:'');
         setvideos(result);
       } catch (error) {
-        console.log('Error fetching comments:', error);
+        console.log('Error fetching videos:', error);
       }
     };
     fetchData();
-  }, []);
-  console.log(videos)
+  }, [channelData,setvideos]);
   return (
     <div className='w-full md:w-1/3 overflow-y-auto bg-[#0F0F0F]' >
       <div className='flex flex-col gap-4'>
         {videos ?
           videos.map((items, index) => {
             return (
-              <div key={index} className='w-full flex flex-col'>
+              <div key={index} className='w-full flex flex-col '>
                 <Link
-                  to={`/video/${items ? items.id : ''}`}
-                  className='w-full flex flex-col md:flex-row gap-4'
+                  to={`/video/${items ? items.id .videoId: ''}`}
+                  className='w-full flex flex-col xl:flex-row gap-4'
                 >
-                  <div className='w-full px-2 md:w-1/2'>
+                  <div className='w-full px-2 xl:w-1/2'>
                   <img src={items ? items.snippet.thumbnails.medium.url : ''} alt="" className='w-full rounded-lg' />
                   </div>
-                  <div className='flex flex-row gap-4 pt-2 px-2 w-full md:w-1/2'>
+                  <div className='flex flex-row gap-4 pt-2 px-2 w-full xl:w-1/2'>
                     
                     <div className='w-7/8'>
                       <h2 className='text-sm font-bold'>{items ? items.snippet.title : ''}</h2>
