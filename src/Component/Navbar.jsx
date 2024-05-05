@@ -19,7 +19,7 @@ function Navbar() {
 
     return (
         <>
-            <div className='flex flex-row items-center justify-between bg-[#0F0F0F] py-2 pl-4 pr-8 fixed w-full h-[8vh] shadow-2xl  '>
+            <div className='flex flex-row items-center justify-between bg-[#0F0F0F] py-2 pl-4 pr-8 fixed w-full h-[8vh] shadow-2xl z-40 '>
                 <div className='flex flex-row gap-2 items-center'>
                     <FontAwesomeIcon icon={faBars} className='hover:rounded-full hover:bg-[#686868b5] text-xl p-3 text-white' onClick={()=>{menu==''?setmenu('hidden'):setmenu('')}}/>
                     <img src={youtube} width={25} height={20} />

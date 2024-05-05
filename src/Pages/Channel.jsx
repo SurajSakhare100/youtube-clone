@@ -1,48 +1,58 @@
 import React from 'react'
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useapi } from '../context/Youtube';
 import SideNav from './SideNav';
 import Navbar from '../Component/Navbar';
 import { DiW3C } from 'react-icons/di';
 import moment from 'moment';
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 function Channel() {
-  const {channelInfos, channelPlayList } = useapi();
-    return (
-      <>
-        <SideNav />
-        <Navbar />
-        <div className='w-full h-auto overflow-scroll pt-16 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-3 gap-6'>
-  
-          {channelPlayList ? channelPlayList.map((playlist, index) => (
-            <div key={index}>
-             
-              <Link
-             to={`/playlist/${playlist.id}`}
+  const { channelInfos, channelPlayList } = useapi();
+  return (
+    <>
+      <SideNav />
+      <Navbar />
+      <div className='w-full h-auto overflow-scroll pt-24 bg-black text-white shadow-md grid grid-cols-1 md:grid-cols-2 md:px-4 xl:grid-cols-4 gap-6'>
+        {/* <h1 className='text-xl'>Playlist</h1> */}
+        {channelPlayList ? channelPlayList.map((playlist, index) => (
+          <div key={index}>
+
+            <Link
+              to={`/playlist/${playlist.id}`}
+
             >
-              <img src={playlist.snippet.thumbnails.medium.url} alt="" className='w-full m-auto rounded-lg' />
-              <div className='flex flex-row gap-4 pt-2 px-1'>
-                <div className='w-1/8 flex-shrink-0'>
-                  <img src={channelInfos.snippet.thumbnails.default.url} width={40} height={40} className='rounded-full' />
-                </div>
-                <div className='w-7/8'>
-                  <h2 className='text-sm font-bold'>{playlist.snippet.localized.title}</h2>
-                  <h4 className='text-[14px]'>
-                  </h4>
-                  <div className='flex gap-2 text-[12px]'>
-                    <p className='font-semibold'>{channelInfos? channelInfos.snippet.title : ''} </p>
-                    <p>{moment(playlist ? playlist.snippet.publishedAt : '').fromNow()}</p>
+              <div className='w-full relative'>
+                <div className='w-full relative'>
+                  <div className='w-11/12 h-full bg-[#937877] rounded-lg absolute inset-0 flex items-center justify-center bottom-2 m-auto z-0 '>
+                    {/* Content inside the first div */}
+                  </div>
+                  <img src={playlist.snippet.thumbnails.medium.url} alt="" className='w-full m-auto rounded-lg relative z-10 ' />
+                  <div className='w-full h-full bg-transparent rounded-lg absolute top-0 m-auto z-40 text-transparent hover:text-white hover:bg-[#111111dc] flex items-center justify-center gap-2'>
+                    <FontAwesomeIcon icon={faPlay} className='text-2xl ' />
+                    <p className='text-md '>Play</p>
                   </div>
                 </div>
               </div>
+              <div className='flex flex-row gap-4 pt-2 px-1'>
+                
+                <div className=''>
+                  <h2 className='text-[14px] font-bold'>{playlist.snippet.localized.title}</h2>
+                  <h4 className='text-[12px]'>View Full PlayList</h4>
+                </div>
+              </div>
+
             </Link>
-            </div>
-          )) : ''}
-        </div>
-      </>
-    )
-  }
+
+          </div>
+        )) : ''}
+      </div>
+    </>
+  )
+}
 
 export default Channel
 
