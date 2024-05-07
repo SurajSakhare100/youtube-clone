@@ -1,9 +1,10 @@
+import { API_KEY } from "..";
+
 const fetchVideos = async (channelId) => {
     try {
-        const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
-        const MAX_RESULTS = 50; // Adjust as needed
+        const MAX_RESULTS = 50; 
         const video_url =
-            `https://www.googleapis.com/youtube/v3/search?key=${API}&part=snippet&channelId=${channelId}&maxResults=${MAX_RESULTS}`;
+            `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&channelId=${channelId}&maxResults=${MAX_RESULTS}`;
         const response = await fetch(video_url);
         const data = await response.json();
         console.log(channelId)

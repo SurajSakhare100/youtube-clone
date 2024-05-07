@@ -1,7 +1,6 @@
-import React from "react";
+import { API_KEY } from "..";
 const banner = async () => {
-  const API = `AIzaSyBq7pRgOu_yP4mvYq_vdegL4v5eDjlUyZE`;
-  const video_url = `https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&key=${API}`;
+  const video_url = `https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&key=${API_KEY}`;
   await fetch(`https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=UCIihexFQucy1Sm7V7yvL_mA`,
   {
     headers: {

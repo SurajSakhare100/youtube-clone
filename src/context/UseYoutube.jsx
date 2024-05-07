@@ -84,7 +84,7 @@ function UseYoutube({ children }) {
     };
 
     fetchData();
-  }, [category]);
+  }, [category,videoid]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -245,6 +245,7 @@ function UseYoutube({ children }) {
     channelSections, setchannelSections,
     channelPlayList, setchannelPlayList,
     signingoogle, signinemail,
+    signUpEmail,
     authStatus,setauthStatus
   };
 

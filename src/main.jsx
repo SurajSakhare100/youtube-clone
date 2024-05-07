@@ -10,6 +10,8 @@ import Channel from './Pages/Channel.jsx'
 import SignIn from './Pages/SignIn.jsx'
 import SignUp from './Pages/SignUp.jsx'
 import ChannelVideo from './Pages/ChannelVideo.jsx'
+import Try from './Pages/Try.jsx'
+import Video from './Pages/Video.jsx'
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/auth/signin',
         element: <SignIn />,
+      },
+      {
+        path: 'video/try',
+        element: <Video />,
       },
     ]
   }
