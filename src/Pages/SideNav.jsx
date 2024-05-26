@@ -25,7 +25,7 @@ function SideNav() {
     return (
         <>
             <div className={`md:w-[280px] pt-3 bg-[#0F0F0F]  mt-12 ${menu} `}>
-                <div className='lg:w-full h-full hidden sm:hidden md:block overflow-y-auto overflow-x-hidden'>
+                <div className='lg:w-full h-full  md:block overflow-y-auto overflow-x-hidden'>
                     <ul className='w-full px-1 py-2 border-b mr-2 ml-2 border-[#2a2a2a]'>
                         <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
                             <FaHouse style={{width:"20px",height:"20px",color:"white"}}/>
