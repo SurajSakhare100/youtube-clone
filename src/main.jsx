@@ -7,11 +7,7 @@ import VideoPage from './Pages/VideoPage.jsx'
 import Home from './Pages/Home.jsx'
 import Search from './Pages/Search.jsx'
 import Channel from './Pages/Channel.jsx'
-import SignIn from './Pages/SignIn.jsx'
-import SignUp from './Pages/SignUp.jsx'
 import ChannelVideo from './Pages/ChannelVideo.jsx'
-import Try from './Pages/Try.jsx'
-import Video from './Pages/Video.jsx'
 
 const router = createBrowserRouter([
   {
@@ -38,18 +34,7 @@ const router = createBrowserRouter([
         path: '/search',
         element: <Search />,
       },
-      {
-        path: '/auth/signup',
-        element: <SignUp />,
-      },
-      {
-        path: '/auth/signin',
-        element: <SignIn />,
-      },
-      {
-        path: 'video/try',
-        element: <Video />,
-      },
+      
     ]
   }
 ])

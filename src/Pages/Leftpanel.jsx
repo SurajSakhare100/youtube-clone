@@ -1,27 +1,54 @@
 import { faDownload, faHeart, faHeartBroken, faLink, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import Comment from '../Component/Comment';
 import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import { useapi } from '../context/Youtube';
-import channelInfo from '../Api/ChannelInfo';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 function Leftpanel() {
-    const { channelData, videoid, addSubscribe, channelInfos ,removeSubscribe,subScribe} = useapi();
+    const { channelApi, videoid, addSubscribe, channelInfoApi, removeSubscribe, subScribe,playListvideosApi ,channelId} = useapi();
     const [subscribing, setSubScribing] = useState('SubScribe')
-    const handleSubmit=(id)=>{
-        let a=true;
+    const [channelData,setChannelData]=useState(null)
+    const [channelInfos,setchannelInfo]=useState(null)
+    const handleSubmit = (id) => {
+        let a = true;
         for (let i = 0; i < subScribe.length; i++) {
-            if(subScribe[i].id===id){
-                a=false;
+            if (subScribe[i].id === id) {
+                a = false;
             }
         }
-        a?setSubScribing('SubScribe'):setSubScribing('UnSubScribe')
+        a ? setSubScribing('SubScribe') : setSubScribing('UnSubScribe')
     }
     useEffect(() => {
         handleSubmit(channelInfos?.id)
     }, [channelInfos])
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const result = await channelApi(videoid);
+            setChannelData(result);
+          } catch (error) {
+            console.log('Error fetching recommended videos:', error);
+          }
+        };
+    
+        fetchData();
+      }, [videoid, playListvideosApi]);
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const result = await channelInfoApi(
+              channelData ? channelData.snippet.channelId : channelId
+            );
+            setchannelInfo(result)
+          } catch (error) {
+            console.log('Error fetching comments:', error);
+          }
+        };
+    
+        fetchData();
+      }, [videoid, channelData, channelId]);
     return (
         <>
             <div className='w-full lg:w-2/3 pt-4 px-2 sm:px-10 bg-[#0F0F0F]'>
@@ -40,9 +67,9 @@ function Leftpanel() {
                     <div className='flex flex-col-reverse md:flex-row md:items-center items-start justify-between my-4 gap-4 '>
                         <div className='flex gap-4 items-center overflow-hidden '>
                             <div className='w-[40px] h-[40px] rounded-full flex-shrink-0'>
-<Link to={`/channel/${channelData?channelData.snippet.channelId:''}`}>
-<img src={channelInfos?.snippet.thumbnails.default.url} width={40} height={40} className='rounded-full' />
-</Link>
+                                <Link to={`/channel/${channelData ? channelData.snippet.channelId : ''}`}>
+                                    <img src={channelInfos?.snippet.thumbnails.default.url} width={40} height={40} className='rounded-full' />
+                                </Link>
                             </div>
                             <div className='flex flex-col'>
                                 <h5 className='text-md md:text-xl'>
@@ -51,12 +78,12 @@ function Leftpanel() {
                                 {/* <p>{valueConverter(channelData ?  channelData.snippet.vi: '1M')}</p> */}
                             </div>
                             <button className='px-6  text-sm h-[30px] bg-red-800 rounded-2xl'
-                             onClick={() => {
-                                
-                                subscribing == 'SubScribe' ? addSubscribe({ title: channelData.snippet.channelTitle, img: channelInfos.snippet.thumbnails.default.url,id:channelInfos.id },channelInfos.id) :removeSubscribe(channelInfos.id)
-                                subscribing == 'SubScribe' ? setSubScribing('UnSubScribe') : setSubScribing('SubScribe');
-                               
-                            }}>{subscribing}</button>
+                                onClick={() => {
+
+                                    subscribing == 'SubScribe' ? addSubscribe({ title: channelData.snippet.channelTitle, img: channelInfos.snippet.thumbnails.default.url, id: channelInfos.id }, channelInfos.id) : removeSubscribe(channelInfos.id)
+                                    subscribing == 'SubScribe' ? setSubScribing('UnSubScribe') : setSubScribing('SubScribe');
+
+                                }}>{subscribing}</button>
                         </div>
                         <div className=''>
                             <div className='flex gap-2'>
@@ -72,12 +99,8 @@ function Leftpanel() {
                     <div>
                     </div>
                 </div>
-                {/* <div className='flex  pb-2 border-b mt-2 gap-4 items-center'>
-                    <h2 className='text-xl font-bold'>Comment</h2>
-                    <p>{valueConverter(channelData ?channelData.statistics.commentCount : '')}</p>
-                </div> */}
                 <div className='hidden md:block'>
-                <Comment videoid={videoid} />
+                    <Comment />
                 </div>
             </div>
         </>

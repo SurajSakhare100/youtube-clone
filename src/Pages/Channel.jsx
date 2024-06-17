@@ -11,7 +11,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 function Channel() {
-  const { channelInfos, channelPlayList } = useapi();
+  const { channelPlayListApi ,channelId, channelInfo, subScribe, channelApi, channelInfoApi} = useapi();
+  const [channelPlayList,setchannelPlayList]=useState('')
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await channelPlayListApi(channelId);
+        setchannelPlayList(result)
+      } catch (error) {
+        console.log('Error fetching comments:', error);
+      }
+    };
+
+    fetchData();
+  }, [channelId, channelInfo, subScribe, channelApi, channelInfoApi]);
   return (
     <>
       <SideNav />

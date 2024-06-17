@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import Navbar from '../Component/Navbar'
 import Leftpanel from './Leftpanel'
 import Rightpanel from './Rightpanel'
-import { useParams } from 'react-router-dom';
-import { useapi } from '../context/Youtube';
 import SideNav from './SideNav';
 
 function VideoPage() {

@@ -7,7 +7,6 @@ const fetchVideos = async (channelId) => {
             `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&channelId=${channelId}&maxResults=${MAX_RESULTS}`;
         const response = await fetch(video_url);
         const data = await response.json();
-        console.log(channelId)
         return data.items;
     }
     catch (error) {

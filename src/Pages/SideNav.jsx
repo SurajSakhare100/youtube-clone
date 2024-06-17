@@ -19,22 +19,19 @@ import { IoGameController } from 'react-icons/io5'
 import { GrTrophy } from 'react-icons/gr'
 import { ImNewspaper } from 'react-icons/im'
 function SideNav() {
-    const channeldata = null;
+    // const channeldata = null;
 
-    const { category, subScribe, setSubScribe,setCategory,channelInfos, setchannelInfo,menu } = useapi()
+    const { subScribe, setSubScribe,setCategory, setchannelInfo,menu } = useapi()
     return (
         <>
             <div className={`md:w-[280px] pt-3 bg-[#0F0F0F]  mt-12 ${menu} `}>
                 <div className='lg:w-full h-full  md:block overflow-y-auto overflow-x-hidden'>
                     <ul className='w-full px-1 py-2 border-b mr-2 ml-2 border-[#2a2a2a]'>
+                        <Link to={'/'}>
                         <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
                             <FaHouse style={{width:"20px",height:"20px",color:"white"}}/>
                             <p>Home</p>
-                        </li>
-                        <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
-                            <SiYoutubeshorts style={{width:"20px",height:"20px",color:"white"}} />
-                            <p>Shorts</p>
-                        </li>
+                        </li></Link>
                         <li className='flex flex-row justify-start items-center gap-6 text-white py-2 px-4 rounded-lg hover:bg-[#686868b5] cursor-pointer'>
                             <MdOutlineSubscriptions style={{width:"20px",height:"20px",color:"white"}} />
                             <p>Subscription</p>

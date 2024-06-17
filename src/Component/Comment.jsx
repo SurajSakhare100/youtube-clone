@@ -1,16 +1,27 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { faHeartCircleCheck, faHeartbeat } from '@fortawesome/free-solid-svg-icons'
-import commentapi from '../Api/comment';
-import fetchvideo from '../Api/Video';
 import valueConverter from './valueConverter';
 import moment from 'moment';
 import { useapi } from '../context/Youtube';
 
 
 function Comment() {
-    const {comments,setComment}=useapi()
+    const [comments,setComments]=useState(null)
+    const {commentApi,videoid,channelPlayListsApi}=useapi()
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const result = await commentApi(videoid);
+            setComments(result);
+          } catch (error) {
+            console.log('Error fetching comments:', error);
+          }
+        };
+    
+        fetchData();
+      }, [videoid,channelPlayListsApi]);
     return (
         <>
         <div>

@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
-import valueConverter from '../Component/valueConverter';
 import moment from 'moment';
 import { useapi } from '../context/Youtube';
-import fetchVideos from '../Api/channnelVideo';
 
 function Rightpanel() {
-  const { channelData} = useapi();
+  const { channelApi,recommended,videoid, playListvideosApi} = useapi();
   const [videos,setvideos]=useState('')
+  const [channelData,setChannelData]=useState(null)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetchVideos(channelData?channelData.snippet.channelId:'');
+        const result = await channelApi(videoid);
+        setChannelData(result);
+      } catch (error) {
+        console.log('Error fetching recommended videos:', error);
+      }
+    };
+
+    fetchData();
+  }, [videoid, playListvideosApi]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await recommended(channelData?channelData.snippet.channelId:'');
         setvideos(result);
       } catch (error) {
         console.log('Error fetching videos:', error);
       }
     };
     fetchData();
-  }, [channelData,setvideos]);
+  }, [channelData,setvideos,videoid]);
   return (
     <div className='w-full md:w-1/3 overflow-y-auto bg-[#0F0F0F]' >
       <div className='flex flex-col gap-4'>
@@ -27,7 +39,7 @@ function Rightpanel() {
             return (
               <div key={index} className='w-full flex flex-col '>
                 <Link
-                  to={`/video/${items ? items.id .videoId: ''}`}
+                  to={`/video/${items?items.id.videoId: ''}`}
                   className='w-full flex flex-col xl:flex-row gap-4'
                 >
                   <div className='w-full px-2 xl:w-1/2'>

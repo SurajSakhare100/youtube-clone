@@ -1,12 +1,6 @@
 import React, { useContext } from "react";
 export const Youtube=React.createContext(
-    {
-        search:[],
-        subscribe:[{
-            title:'',
-            img:''
-        }]
-    }
+   null
 );
 export const YoutubeProvider=Youtube.Provider;
 

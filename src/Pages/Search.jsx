@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import Searchapi from '../Api/SearchApi'
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import valueConverter from '../Component/valueConverter';
 import { useapi } from '../context/Youtube';
-import thumbnail1 from '../assets/thumbnail1.png'
 import SideNav from './SideNav';
 import Navbar from '../Component/Navbar';
-import channelInfo from '../Api/ChannelInfo';
 function Search() {
-    const { searchResults, setSearchResults,searchTitle,channelInfos} = useapi();
-    const {channelLogo,setchannelLogo}=useState('');
-    // useEffect(async() => {
-    //     const result=await 
-    //     console.log(result)
-    //     setchannelLogo(result);
-    // }, [])
-    
+    const { searchResults,searchTitle} = useapi();
+    const [search,setSearchResults]=useState('')
+    useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await searchResults(searchTitle);
+        setSearchResults(result);
+      } catch (error) {
+        console.log('Error fetching search results:', error);
+      }
+    };
+
+    fetchData();
+  }, [searchTitle])
     return (
         <>
         <Navbar/>
        <SideNav />
             <div className={`w-full h-auto overflow-y-auto pt-20 bg-black px-2 md:px-10 text-white shadow-md flex flex-col gap-4 md:gap-14 items-center`}>
-                {searchResults?searchResults.map((items, index) => {
+                {search?search.map((items, index) => {
                     return (
                         <div key={index} className='w-full md:w-2/3 h-1/2 '>
                             <Link

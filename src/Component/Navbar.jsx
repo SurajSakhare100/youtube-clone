@@ -4,14 +4,12 @@ import { faBars, faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icon
 import youtube from '../assets/youtube.png'
 import { Link } from 'react-router-dom'
 import { useapi } from '../context/Youtube'
-import { signOut } from 'firebase/auth'
-import { auth } from '../Pages/SignUp'
 import user from '../assets/simon.png'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { RiVideoAddLine } from 'react-icons/ri'
 
 function Navbar() {
-    const {searchTitle, setSearchTitle,menu, setmenu,setauthStatus } = useapi()
+    const {setSearchTitle,menu, setmenu} = useapi()
     const [input, setinput] = useState('')
     const handlesubmit = () => {
        setSearchTitle(input)
