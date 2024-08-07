@@ -1,2 +1,2 @@
-export const API_KEY = import.meta.env.YOUTUBE_API;
-console.log(API_KEY); // This will log the actual API key value in production
+export const API_KEY = import.meta.env.VITE_YOUTUBE_API;
+console.log('YouTube API Key:', API_KEY); // This should log the API key value
