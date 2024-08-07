@@ -18,23 +18,18 @@ function UseYoutube({ children }) {
   const [category, setCategory] = useState(0);
   const [searchTitle, setSearchTitle] = useState('');
   const [subScribe, setSubScribes] = useState([]);
-
-  // const [data, setData] = useState(null);
-
   const [videoDetails, setVideoDetails] = useState([]);
   const [recommendedVideos, setRecommendedVideos] = useState([]);
   const [channelSections, setchannelSections] = useState(null);
   const [menu, setmenu] = useState('');
 
-  
-
   const videoCategoryApi = videoApi
-  const searchResults=SearchApi
-  const recommended=fetchVideos
-  const commentApi=CommentApi
-  const channelApi=channelapi
-  const channelInfoApi=channelInfo
-  const playListvideosApi=playListvideosapi
+  const searchResults = SearchApi
+  const recommended = fetchVideos
+  const commentApi = CommentApi
+  const channelApi = channelapi
+  const channelInfoApi = channelInfo
+  const playListvideosApi = playListvideosapi
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,40 +44,32 @@ function UseYoutube({ children }) {
     fetchData();
   }, [videoid, category]);
 
- 
-  
-
-
-  
-
-  const channelPlayListApi=channelPlayListsapi
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await channelSection(channelId);
-        setchannelSections(result)
+        setchannelSections(result);
       } catch (error) {
-        console.log('Error fetching comments:', error);
+        console.log('Error fetching channel sections:', error);
       }
     };
 
     fetchData();
   }, [channelId, channelInfo, subScribe]);
 
-
   const addSubscribe = (subscribe, id) => {
     let a = 0;
     for (let i = 0; i < subScribe.length; i++) {
-      if (subScribe[i].id != id) {
+      if (subScribe[i].id !== id) {
         a++;
       }
     }
-    a == subScribe.length ? setSubScribes((prev) => [{ ...subscribe }, ...prev]) : ''
-  }
+    a === subScribe.length ? setSubScribes((prev) => [{ ...subscribe }, ...prev]) : '';
+  };
+
   const removeSubscribe = (id) => {
-    setSubScribes((prev) => prev.filter((sub) => sub.id !== id))
-  }
+    setSubScribes((prev) => prev.filter((sub) => sub.id !== id));
+  };
 
   useEffect(() => {
     const store = localStorage.getItem("store");
@@ -96,19 +83,17 @@ function UseYoutube({ children }) {
         console.error('Error parsing JSON from localStorage:', error);
       }
     }
-  }, [])
-  useEffect(() => {
-    localStorage.setItem("store", JSON.stringify(subScribe))
-  }, [subScribe, addSubscribe, channelInfoApi])
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem("store", JSON.stringify(subScribe));
+  }, [subScribe, addSubscribe, channelInfoApi]);
 
   const contextValue = {
     category, setCategory,
-    // data, setData,
     videoDetails, setVideoDetails,
     recommendedVideos, setRecommendedVideos,
     videoid, videoCategory, channelId,
-    
     subScribe, setSubScribes,
     addSubscribe, removeSubscribe,
     menu, setmenu,
@@ -121,9 +106,9 @@ function UseYoutube({ children }) {
     commentApi,
     channelInfoApi,
     playListvideosApi,
-    channelPlayListApi
-
   };
+
+  console.log('YouTube API Key:', import.meta.env.VITE_YOUTUBE_API); // Debug log
 
   return (
     <YoutubeProvider value={contextValue}>
