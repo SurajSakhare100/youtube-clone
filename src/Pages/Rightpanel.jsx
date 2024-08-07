@@ -30,10 +30,10 @@ function Rightpanel() {
       }
     };
     fetchData();
-  }, [channelData,setvideos,videoid]);
+  }, [channelData,setvideos,videoid,playListvideosApi,channelApi]);
   return (
-    <div className='w-full md:w-1/3 overflow-y-auto bg-[#0F0F0F]' >
-      <div className='flex flex-col gap-4'>
+    <div className='w-full lg:w-1/3 overflow-y-auto bg-[#0F0F0F]' >
+      <div className='flex flex-col gap-4 flex-wrap'>
         {videos ?
           videos.map((items, index) => {
             return (

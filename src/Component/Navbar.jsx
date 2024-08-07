@@ -11,7 +11,7 @@ import { RiVideoAddLine } from 'react-icons/ri'
 function Navbar() {
     const {setSearchTitle,menu, setmenu} = useapi()
     const [input, setinput] = useState('')
-    const handlesubmit = () => {
+    const handlesubmit = (e) => {
        setSearchTitle(input)
     }
 
@@ -33,7 +33,7 @@ function Navbar() {
                             onChange={(e) => { setinput(e.target.value) }}
                         />
                         <div className='h-full bg-[#222222] absolute right-0 top-0 rounded-3xl shadow px-6 flex items-center justify-center rounded-l-none '>
-                            <Link to={'/search'} onClick={() => handlesubmit()}>
+                            <Link to={'/search'} onClick={handlesubmit}>
                                 <FontAwesomeIcon icon={faSearch} className='text-white md:w-[20px] md:h-full' />
                             </Link>
                         </div>
@@ -46,7 +46,7 @@ function Navbar() {
                     <div className='flex flex-row items-center justify-center gap-6 '>
                         <RiVideoAddLine className='w-[25px] h-[25px] text-white hidden md:block' />
                         <IoMdNotificationsOutline className='w-[25px] h-[25px] text-white hidden md:block' />
-                        <img src={user} className='w-[32px] h-[32px] rounded-full ' onClick={()=>signOut(auth)} />
+                        <img src={user} className='w-[32px] h-[32px] rounded-full '  />
                     </div>
                 </div>
             </div>
