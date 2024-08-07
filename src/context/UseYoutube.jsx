@@ -30,6 +30,7 @@ function UseYoutube({ children }) {
   const channelApi = channelapi
   const channelInfoApi = channelInfo
   const playListvideosApi = playListvideosapi
+  const channelPlayListApi=channelPlayListsapi
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,6 +107,7 @@ function UseYoutube({ children }) {
     commentApi,
     channelInfoApi,
     playListvideosApi,
+    channelPlayListApi
   };
 
   console.log('YouTube API Key:', import.meta.env.VITE_YOUTUBE_API); // Debug log
